@@ -3,7 +3,7 @@
     "path": "E:/app/yuan_blog/content/post/2020-12-01-r-rmarkdown/index.en.Rmd",
     "project_path": "content/post/2020-12-01-r-rmarkdown/index.en.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "2005454298",
     "contents": "",
     "dirty": false,
     "created": 1678253991645.0,
@@ -11,14 +11,17 @@
     "relative_order": 1,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "30,4",
+        "scrollLine": "9",
+        "last_setup_crc32": "74961c4986caa7c1"
     },
     "folds": "",
     "lastKnownWriteTime": 1678253770,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1678253770,
+    "last_content_update": 1678274285209,
     "read_only": false,
     "read_only_alternatives": []
 }
