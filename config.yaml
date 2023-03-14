@@ -67,7 +67,7 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: cactus
 
         disqusjs:
             shortname:
@@ -119,7 +119,7 @@ params:
         cactus:
             defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
             serverName: "cactus.chat"
-            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+            siteName: "https://app.element.io/#/room/#hitsz_21_ecoexp:matrix.org" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
         giscus:
             repo:
