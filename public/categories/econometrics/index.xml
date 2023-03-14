@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>econometrics on Yuan&#39;s Studio</title>
+        <link>https://zzzzorange.netlify.com/categories/econometrics/</link>
+        <description>Recent content in econometrics on Yuan&#39;s Studio</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 14 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://zzzzorange.netlify.com/categories/econometrics/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Experiment_01</title>
+        <link>https://zzzzorange.netlify.com/p/experiment_01/</link>
+        <pubDate>Tue, 14 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://zzzzorange.netlify.com/p/experiment_01/</guid>
+        <description>
+&lt;style type=&#34;text/css&#34;&gt;
+pre &gt; code.sourceCode { white-space: pre; position: relative; }
+pre &gt; code.sourceCode &gt; span { display: inline-block; line-height: 1.25; }
+pre &gt; code.sourceCode &gt; span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode &gt; span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre &gt; code.sourceCode { white-space: pre-wrap; }
+pre &gt; code.sourceCode &gt; span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code &gt; span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code &gt; span &gt; a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre &gt; code.sourceCode &gt; span &gt; a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; } /* Alert */
+code span.an { color: #008000; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #0000ff; } /* ControlFlow */
+code span.ch { color: #008080; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #008000; } /* Comment */
+code span.cv { color: #008000; } /* CommentVar */
+code span.do { color: #008000; } /* Documentation */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.im { } /* Import */
+code span.in { color: #008000; } /* Information */
+code span.kw { color: #0000ff; } /* Keyword */
+code span.op { } /* Operator */
+code span.ot { color: #ff4000; } /* Other */
+code span.pp { color: #ff4000; } /* Preprocessor */
+code span.sc { color: #008080; } /* SpecialChar */
+code span.ss { color: #008080; } /* SpecialString */
+code span.st { color: #008080; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #008080; } /* VerbatimString */
+code span.wa { color: #008000; font-weight: bold; } /* Warning */
+&lt;/style&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-i&#34; id=&#34;toc-simulation-experiment-i&#34;&gt;Simulation Experiment I&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data&#34; id=&#34;toc-generate-data&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression&#34; id=&#34;toc-run-regression&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-ii&#34; id=&#34;toc-simulation-experiment-ii&#34;&gt;Simulation Experiment II&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data-1&#34; id=&#34;toc-generate-data-1&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression-1&#34; id=&#34;toc-run-regression-1&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-iii&#34; id=&#34;toc-simulation-experiment-iii&#34;&gt;Simulation Experiment III&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data-2&#34; id=&#34;toc-generate-data-2&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression-2&#34; id=&#34;toc-run-regression-2&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-iv&#34; id=&#34;toc-simulation-experiment-iv&#34;&gt;Simulation Experiment IV&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data-3&#34; id=&#34;toc-generate-data-3&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression-3&#34; id=&#34;toc-run-regression-3&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-v&#34; id=&#34;toc-simulation-experiment-v&#34;&gt;Simulation Experiment V&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data-4&#34; id=&#34;toc-generate-data-4&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression-4&#34; id=&#34;toc-run-regression-4&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#simulation-experiment-vi&#34; id=&#34;toc-simulation-experiment-vi&#34;&gt;Simulation Experiment VI&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#generate-data-5&#34; id=&#34;toc-generate-data-5&#34;&gt;Generate Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#run-regression-5&#34; id=&#34;toc-run-regression-5&#34;&gt;Run Regression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;simulation-experiment-i&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment I&lt;/h1&gt;
+&lt;div id=&#34;generate-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;p&gt;Firstly, generate the &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(X_2\)&lt;/span&gt;, and &lt;span class=&#34;math inline&#34;&gt;\(\epsilon_i\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb1&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb1-1&#34;&gt;&lt;a href=&#34;#cb1-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;library&lt;/span&gt;(magrittr) &lt;span class=&#34;co&#34;&gt;# 管道符所用的库&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-2&#34;&gt;&lt;a href=&#34;#cb1-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;min =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;max =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb1-3&#34;&gt;&lt;a href=&#34;#cb1-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt; &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;) &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;fl&#34;&gt;0.5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb1-4&#34;&gt;&lt;a href=&#34;#cb1-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb1-5&#34;&gt;&lt;a href=&#34;#cb1-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;fl&#34;&gt;0.5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then run the model, estimate &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_1\)&lt;/span&gt; by the
+following model: &lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb2&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb2-1&#34;&gt;&lt;a href=&#34;#cb2-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;lm.y1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb2-2&#34;&gt;&lt;a href=&#34;#cb2-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;summary&lt;/span&gt;(lm.y1)&lt;/span&gt;
+&lt;span id=&#34;cb2-3&#34;&gt;&lt;a href=&#34;#cb2-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-4&#34;&gt;&lt;a href=&#34;#cb2-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Call:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-5&#34;&gt;&lt;a href=&#34;#cb2-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## lm(formula = y ~ 1 + x.1 + x.2)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-6&#34;&gt;&lt;a href=&#34;#cb2-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-7&#34;&gt;&lt;a href=&#34;#cb2-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Residuals:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-8&#34;&gt;&lt;a href=&#34;#cb2-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##      Min       1Q   Median       3Q      Max &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-9&#34;&gt;&lt;a href=&#34;#cb2-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## -3.01832 -0.48112  0.08427  0.54660  1.66419 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-10&#34;&gt;&lt;a href=&#34;#cb2-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-11&#34;&gt;&lt;a href=&#34;#cb2-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Coefficients:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-12&#34;&gt;&lt;a href=&#34;#cb2-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##             Estimate Std. Error t value Pr(&amp;gt;|t|)    &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-13&#34;&gt;&lt;a href=&#34;#cb2-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## (Intercept)  4.50631    0.31407   14.35   &amp;lt;2e-16 ***&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-14&#34;&gt;&lt;a href=&#34;#cb2-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## x.1          1.06987    0.07261   14.73   &amp;lt;2e-16 ***&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-15&#34;&gt;&lt;a href=&#34;#cb2-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## x.2          0.53415    0.04761   11.22   &amp;lt;2e-16 ***&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-16&#34;&gt;&lt;a href=&#34;#cb2-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## ---&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-17&#34;&gt;&lt;a href=&#34;#cb2-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-18&#34;&gt;&lt;a href=&#34;#cb2-18&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-19&#34;&gt;&lt;a href=&#34;#cb2-19&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Residual standard error: 0.9621 on 97 degrees of freedom&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-20&#34;&gt;&lt;a href=&#34;#cb2-20&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Multiple R-squared:  0.8543,	Adjusted R-squared:  0.8513 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-21&#34;&gt;&lt;a href=&#34;#cb2-21&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## F-statistic: 284.4 on 2 and 97 DF,  p-value: &amp;lt; 2.2e-16&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-22&#34;&gt;&lt;a href=&#34;#cb2-22&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;(lm.y1)&lt;/span&gt;
+&lt;span id=&#34;cb2-23&#34;&gt;&lt;a href=&#34;#cb2-23&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## (Intercept)         x.1         x.2 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb2-24&#34;&gt;&lt;a href=&#34;#cb2-24&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##   4.5063135   1.0698738   0.5341539&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;estimate &lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_0\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_1\)&lt;/span&gt; by the following model:
+&lt;span class=&#34;math display&#34;&gt;\[Y_i=\alpha_0+\alpha_1X_{1i}+u_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb3&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb3-1&#34;&gt;&lt;a href=&#34;#cb3-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;lm.y2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb3-2&#34;&gt;&lt;a href=&#34;#cb3-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;summary&lt;/span&gt;(lm.y2)&lt;/span&gt;
+&lt;span id=&#34;cb3-3&#34;&gt;&lt;a href=&#34;#cb3-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-4&#34;&gt;&lt;a href=&#34;#cb3-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Call:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-5&#34;&gt;&lt;a href=&#34;#cb3-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## lm(formula = y ~ 1 + x.1)&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-6&#34;&gt;&lt;a href=&#34;#cb3-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-7&#34;&gt;&lt;a href=&#34;#cb3-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Residuals:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-8&#34;&gt;&lt;a href=&#34;#cb3-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##     Min      1Q  Median      3Q     Max &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-9&#34;&gt;&lt;a href=&#34;#cb3-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## -3.2265 -1.1955 -0.0322  1.1315  2.7580 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-10&#34;&gt;&lt;a href=&#34;#cb3-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-11&#34;&gt;&lt;a href=&#34;#cb3-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Coefficients:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-12&#34;&gt;&lt;a href=&#34;#cb3-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##             Estimate Std. Error t value Pr(&amp;gt;|t|)    &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-13&#34;&gt;&lt;a href=&#34;#cb3-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## (Intercept)   7.0950     0.3214   22.08   &amp;lt;2e-16 ***&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-14&#34;&gt;&lt;a href=&#34;#cb3-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## x.1           1.3985     0.1002   13.96   &amp;lt;2e-16 ***&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-15&#34;&gt;&lt;a href=&#34;#cb3-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## ---&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-16&#34;&gt;&lt;a href=&#34;#cb3-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-17&#34;&gt;&lt;a href=&#34;#cb3-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-18&#34;&gt;&lt;a href=&#34;#cb3-18&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Residual standard error: 1.451 on 98 degrees of freedom&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-19&#34;&gt;&lt;a href=&#34;#cb3-19&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## Multiple R-squared:  0.6653,	Adjusted R-squared:  0.6619 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-20&#34;&gt;&lt;a href=&#34;#cb3-20&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## F-statistic: 194.8 on 1 and 98 DF,  p-value: &amp;lt; 2.2e-16&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-21&#34;&gt;&lt;a href=&#34;#cb3-21&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;(lm.y2)&lt;/span&gt;
+&lt;span id=&#34;cb3-22&#34;&gt;&lt;a href=&#34;#cb3-22&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## (Intercept)         x.1 &lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb3-23&#34;&gt;&lt;a href=&#34;#cb3-23&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;##    7.095001    1.398476&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;p&gt;Repeat 1000 times:&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb4&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb4-1&#34;&gt;&lt;a href=&#34;#cb4-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;beta &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb4-2&#34;&gt;&lt;a href=&#34;#cb4-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb4-3&#34;&gt;&lt;a href=&#34;#cb4-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb4-4&#34;&gt;&lt;a href=&#34;#cb4-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;min =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;max =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb4-5&#34;&gt;&lt;a href=&#34;#cb4-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt; &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;) &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;fl&#34;&gt;0.5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-6&#34;&gt;&lt;a href=&#34;#cb4-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb4-7&#34;&gt;&lt;a href=&#34;#cb4-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;fl&#34;&gt;0.5&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;
+&lt;span id=&#34;cb4-8&#34;&gt;&lt;a href=&#34;#cb4-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.2&lt;/span&gt;) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-9&#34;&gt;&lt;a href=&#34;#cb4-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-10&#34;&gt;&lt;a href=&#34;#cb4-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;] &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-11&#34;&gt;&lt;a href=&#34;#cb4-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta, .)&lt;/span&gt;
+&lt;span id=&#34;cb4-12&#34;&gt;&lt;a href=&#34;#cb4-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x&lt;span class=&#34;fl&#34;&gt;.1&lt;/span&gt;) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-13&#34;&gt;&lt;a href=&#34;#cb4-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-14&#34;&gt;&lt;a href=&#34;#cb4-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;] &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-15&#34;&gt;&lt;a href=&#34;#cb4-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(alpha, .)&lt;/span&gt;
+&lt;span id=&#34;cb4-16&#34;&gt;&lt;a href=&#34;#cb4-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb4-17&#34;&gt;&lt;a href=&#34;#cb4-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-18&#34;&gt;&lt;a href=&#34;#cb4-18&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(beta))&lt;/span&gt;
+&lt;span id=&#34;cb4-19&#34;&gt;&lt;a href=&#34;#cb4-19&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9996362&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb4-20&#34;&gt;&lt;a href=&#34;#cb4-20&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(alpha))&lt;/span&gt;
+&lt;span id=&#34;cb4-21&#34;&gt;&lt;a href=&#34;#cb4-21&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 1.250701&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;From the result, we can see that &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is &lt;strong&gt;close&lt;/strong&gt; to the true
+value, comparing to the real value, while &lt;span class=&#34;math inline&#34;&gt;\(\alpha_1\)&lt;/span&gt; is not close to the
+true value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulation-experiment-ii&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment II&lt;/h1&gt;
+&lt;p&gt;Model: &lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Estimating models:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}\epsilon\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\alpha_0+\alpha_1X_{1i}+u_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;generate-data-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;p&gt;This time, we put the result of coefficient of &lt;span class=&#34;math inline&#34;&gt;\(x_1\)&lt;/span&gt; in a function.&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb5&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb5-1&#34;&gt;&lt;a href=&#34;#cb5-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;coef_of_x1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;function&lt;/span&gt;() {&lt;/span&gt;
+&lt;span id=&#34;cb5-2&#34;&gt;&lt;a href=&#34;#cb5-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_zero &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-3&#34;&gt;&lt;a href=&#34;#cb5-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-4&#34;&gt;&lt;a href=&#34;#cb5-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_two &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fl&#34;&gt;0.5&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-5&#34;&gt;&lt;a href=&#34;#cb5-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb5-6&#34;&gt;&lt;a href=&#34;#cb5-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb5-7&#34;&gt;&lt;a href=&#34;#cb5-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;mean =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;at&#34;&gt;sd =&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb5-8&#34;&gt;&lt;a href=&#34;#cb5-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-9&#34;&gt;&lt;a href=&#34;#cb5-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;co&#34;&gt;# Follows the model:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-10&#34;&gt;&lt;a href=&#34;#cb5-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;co&#34;&gt;# beta one hat:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-11&#34;&gt;&lt;a href=&#34;#cb5-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_zero &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_one &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_two &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x_2 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;
+&lt;span id=&#34;cb5-12&#34;&gt;&lt;a href=&#34;#cb5-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_2) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-13&#34;&gt;&lt;a href=&#34;#cb5-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-14&#34;&gt;&lt;a href=&#34;#cb5-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb5-15&#34;&gt;&lt;a href=&#34;#cb5-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-16&#34;&gt;&lt;a href=&#34;#cb5-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb5-17&#34;&gt;&lt;a href=&#34;#cb5-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb5-18&#34;&gt;&lt;a href=&#34;#cb5-18&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat, alpha_one_hat) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;return&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb5-19&#34;&gt;&lt;a href=&#34;#cb5-19&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;p&gt;Then, repeat it and get the mean values of &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_1\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_1\)&lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb6&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb6-1&#34;&gt;&lt;a href=&#34;#cb6-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb6-2&#34;&gt;&lt;a href=&#34;#cb6-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb6-3&#34;&gt;&lt;a href=&#34;#cb6-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb6-4&#34;&gt;&lt;a href=&#34;#cb6-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb6-5&#34;&gt;&lt;a href=&#34;#cb6-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(alpha_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb6-6&#34;&gt;&lt;a href=&#34;#cb6-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb6-7&#34;&gt;&lt;a href=&#34;#cb6-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of beta one hat:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb6-8&#34;&gt;&lt;a href=&#34;#cb6-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(beta_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb6-9&#34;&gt;&lt;a href=&#34;#cb6-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 1.001365&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb6-10&#34;&gt;&lt;a href=&#34;#cb6-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of alpha one hat:&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb6-11&#34;&gt;&lt;a href=&#34;#cb6-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(alpha_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb6-12&#34;&gt;&lt;a href=&#34;#cb6-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9997646&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;From the result, we can see that &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_1\)&lt;/span&gt;
+are both &lt;strong&gt;close&lt;/strong&gt; to the true value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulation-experiment-iii&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment III&lt;/h1&gt;
+&lt;p&gt;Model: &lt;span class=&#34;math display&#34;&gt;\[Y_1=\beta_0+\beta_1X_{1i}+\epsilon_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Estimating models:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\alpha_0+\alpha_1X_{1i}+u_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;generate-data-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;p&gt;Same thing.&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb7&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb7-1&#34;&gt;&lt;a href=&#34;#cb7-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;coef_of_x1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;function&lt;/span&gt;() {&lt;/span&gt;
+&lt;span id=&#34;cb7-2&#34;&gt;&lt;a href=&#34;#cb7-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_zero &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-3&#34;&gt;&lt;a href=&#34;#cb7-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-4&#34;&gt;&lt;a href=&#34;#cb7-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb7-5&#34;&gt;&lt;a href=&#34;#cb7-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb7-6&#34;&gt;&lt;a href=&#34;#cb7-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;) &lt;span class=&#34;co&#34;&gt;# 默认为标准正态分布&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-7&#34;&gt;&lt;a href=&#34;#cb7-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_zero &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_one &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;
+&lt;span id=&#34;cb7-8&#34;&gt;&lt;a href=&#34;#cb7-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_2) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-9&#34;&gt;&lt;a href=&#34;#cb7-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-10&#34;&gt;&lt;a href=&#34;#cb7-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb7-11&#34;&gt;&lt;a href=&#34;#cb7-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-12&#34;&gt;&lt;a href=&#34;#cb7-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb7-13&#34;&gt;&lt;a href=&#34;#cb7-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb7-14&#34;&gt;&lt;a href=&#34;#cb7-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;fu&#34;&gt;return&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat, alpha_one_hat))&lt;/span&gt;
+&lt;span id=&#34;cb7-15&#34;&gt;&lt;a href=&#34;#cb7-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;p&gt;repeat 1000 times:&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb8&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb8-1&#34;&gt;&lt;a href=&#34;#cb8-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb8-2&#34;&gt;&lt;a href=&#34;#cb8-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb8-3&#34;&gt;&lt;a href=&#34;#cb8-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb8-4&#34;&gt;&lt;a href=&#34;#cb8-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb8-5&#34;&gt;&lt;a href=&#34;#cb8-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(alpha_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb8-6&#34;&gt;&lt;a href=&#34;#cb8-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb8-7&#34;&gt;&lt;a href=&#34;#cb8-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb8-8&#34;&gt;&lt;a href=&#34;#cb8-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of beta one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb8-9&#34;&gt;&lt;a href=&#34;#cb8-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(beta_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb8-10&#34;&gt;&lt;a href=&#34;#cb8-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9975254&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb8-11&#34;&gt;&lt;a href=&#34;#cb8-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of alpha one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb8-12&#34;&gt;&lt;a href=&#34;#cb8-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(alpha_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb8-13&#34;&gt;&lt;a href=&#34;#cb8-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 1.003733&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The result shows that both &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_1\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_1\)&lt;/span&gt; are
+&lt;strong&gt;close&lt;/strong&gt; to the true value.&lt;/p&gt;
+&lt;p&gt;实际上，在第一个回归中，&lt;span class=&#34;math inline&#34;&gt;\(x_2\)&lt;/span&gt; 的系数显著水平不高（或者说在0.01不显著）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = y ~ 1 + x_1 + x_2)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.53164 -0.56450  0.00336  0.58411  2.49718 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept)  5.24848    0.31173  16.837   &amp;lt;2e-16 ***
+## x_1          0.97502    0.06759  14.425   &amp;lt;2e-16 ***
+## x_2         -0.03363    0.04549  -0.739    0.462    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 0.9079 on 97 degrees of freedom
+## Multiple R-squared:  0.6905,	Adjusted R-squared:  0.6841 
+## F-statistic: 108.2 on 2 and 97 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulation-experiment-iv&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment IV&lt;/h1&gt;
+&lt;p&gt;Model: &lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\epsilon_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Estimating models:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1\tilde{X}_{1i}+\epsilon_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\alpha_0+\alpha_1X_{1i}+\epsilon_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;generate-data-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb10&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb10-1&#34;&gt;&lt;a href=&#34;#cb10-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;coef_of_x1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;function&lt;/span&gt;() {&lt;/span&gt;
+&lt;span id=&#34;cb10-2&#34;&gt;&lt;a href=&#34;#cb10-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_zero &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-3&#34;&gt;&lt;a href=&#34;#cb10-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-4&#34;&gt;&lt;a href=&#34;#cb10-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb10-5&#34;&gt;&lt;a href=&#34;#cb10-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    ita &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb10-6&#34;&gt;&lt;a href=&#34;#cb10-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb10-7&#34;&gt;&lt;a href=&#34;#cb10-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_1_tilde &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; ita&lt;/span&gt;
+&lt;span id=&#34;cb10-8&#34;&gt;&lt;a href=&#34;#cb10-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_zero &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_one &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;
+&lt;span id=&#34;cb10-9&#34;&gt;&lt;a href=&#34;#cb10-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1_tilde) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-10&#34;&gt;&lt;a href=&#34;#cb10-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-11&#34;&gt;&lt;a href=&#34;#cb10-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb10-12&#34;&gt;&lt;a href=&#34;#cb10-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-13&#34;&gt;&lt;a href=&#34;#cb10-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb10-14&#34;&gt;&lt;a href=&#34;#cb10-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb10-15&#34;&gt;&lt;a href=&#34;#cb10-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;fu&#34;&gt;return&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat, alpha_one_hat))&lt;/span&gt;
+&lt;span id=&#34;cb10-16&#34;&gt;&lt;a href=&#34;#cb10-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb11&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb11-1&#34;&gt;&lt;a href=&#34;#cb11-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb11-2&#34;&gt;&lt;a href=&#34;#cb11-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb11-3&#34;&gt;&lt;a href=&#34;#cb11-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb11-4&#34;&gt;&lt;a href=&#34;#cb11-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb11-5&#34;&gt;&lt;a href=&#34;#cb11-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb11-6&#34;&gt;&lt;a href=&#34;#cb11-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(alpha_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb11-7&#34;&gt;&lt;a href=&#34;#cb11-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb11-8&#34;&gt;&lt;a href=&#34;#cb11-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of beta one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb11-9&#34;&gt;&lt;a href=&#34;#cb11-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(beta_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb11-10&#34;&gt;&lt;a href=&#34;#cb11-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.3445264&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb11-11&#34;&gt;&lt;a href=&#34;#cb11-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb11-12&#34;&gt;&lt;a href=&#34;#cb11-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of alpha one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb11-13&#34;&gt;&lt;a href=&#34;#cb11-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(alpha_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb11-14&#34;&gt;&lt;a href=&#34;#cb11-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9996002&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So, &lt;span class=&#34;math inline&#34;&gt;\(\tilde{X}_{1i}\)&lt;/span&gt;’s coefficient &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta}_1\)&lt;/span&gt; is &lt;strong&gt;close&lt;/strong&gt; to the
+true value, while the coefficient of &lt;span class=&#34;math inline&#34;&gt;\(X_{1i}\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(\hat{\alpha}_1\)&lt;/span&gt; is &lt;strong&gt;not
+close&lt;/strong&gt; to the true value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulation-experiment-v&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment V&lt;/h1&gt;
+&lt;p&gt;Model: &lt;span class=&#34;math display&#34;&gt;\[Y_i=\beta_0+\beta_1X_{1i}+\epsilon_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Estimating models:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[\tilde{Y_i}=\beta_0+\beta_1X_{1i}+\epsilon_1\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Y_i=\alpha_0+\alpha_1X_{1i}+u_i\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;generate-data-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb12&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb12-1&#34;&gt;&lt;a href=&#34;#cb12-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;coef_of_x1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;function&lt;/span&gt;() {&lt;/span&gt;
+&lt;span id=&#34;cb12-2&#34;&gt;&lt;a href=&#34;#cb12-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_zero &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-3&#34;&gt;&lt;a href=&#34;#cb12-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-4&#34;&gt;&lt;a href=&#34;#cb12-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;runif&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb12-5&#34;&gt;&lt;a href=&#34;#cb12-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    ita &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb12-6&#34;&gt;&lt;a href=&#34;#cb12-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb12-7&#34;&gt;&lt;a href=&#34;#cb12-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_zero &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_one &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x_1 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon&lt;/span&gt;
+&lt;span id=&#34;cb12-8&#34;&gt;&lt;a href=&#34;#cb12-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    y_tilde &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; y &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; ita&lt;/span&gt;
+&lt;span id=&#34;cb12-9&#34;&gt;&lt;a href=&#34;#cb12-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y_tilde &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-10&#34;&gt;&lt;a href=&#34;#cb12-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-11&#34;&gt;&lt;a href=&#34;#cb12-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb12-12&#34;&gt;&lt;a href=&#34;#cb12-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(y &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x_1) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-13&#34;&gt;&lt;a href=&#34;#cb12-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb12-14&#34;&gt;&lt;a href=&#34;#cb12-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb12-15&#34;&gt;&lt;a href=&#34;#cb12-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;fu&#34;&gt;return&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat, alpha_one_hat))&lt;/span&gt;
+&lt;span id=&#34;cb12-16&#34;&gt;&lt;a href=&#34;#cb12-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb13&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb13-1&#34;&gt;&lt;a href=&#34;#cb13-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb13-2&#34;&gt;&lt;a href=&#34;#cb13-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb13-3&#34;&gt;&lt;a href=&#34;#cb13-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb13-4&#34;&gt;&lt;a href=&#34;#cb13-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    beta_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(beta_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb13-5&#34;&gt;&lt;a href=&#34;#cb13-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_one_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(alpha_one_hat_list, &lt;span class=&#34;fu&#34;&gt;coef_of_x1&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb13-6&#34;&gt;&lt;a href=&#34;#cb13-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb13-7&#34;&gt;&lt;a href=&#34;#cb13-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb13-8&#34;&gt;&lt;a href=&#34;#cb13-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of beta one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb13-9&#34;&gt;&lt;a href=&#34;#cb13-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(beta_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb13-10&#34;&gt;&lt;a href=&#34;#cb13-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9944924&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb13-11&#34;&gt;&lt;a href=&#34;#cb13-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb13-12&#34;&gt;&lt;a href=&#34;#cb13-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# mean value of alpha one hat&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb13-13&#34;&gt;&lt;a href=&#34;#cb13-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(alpha_one_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb13-14&#34;&gt;&lt;a href=&#34;#cb13-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 1.000349&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can see from the result that coefficients of &lt;span class=&#34;math inline&#34;&gt;\(X_{1i}\)&lt;/span&gt; in both models
+are &lt;strong&gt;close&lt;/strong&gt; to the true value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simulation-experiment-vi&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simulation Experiment VI&lt;/h1&gt;
+&lt;p&gt;Supply curve:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Q_s=\beta_0+\beta_1P+\beta_2X+\epsilon_1\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Demand curve:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[Q_d=\alpha_0+\alpha_1P+\alpha_2Z+\epsilon_2\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;In equilibrium:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P=\pi_0+\pi_1X+\pi_2Z+u\]&lt;/span&gt;&lt;/p&gt;
+&lt;div id=&#34;generate-data-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Generate Data&lt;/h2&gt;
+&lt;p&gt;Firstly, we simulate the variables.&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb14&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb14-1&#34;&gt;&lt;a href=&#34;#cb14-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb14-2&#34;&gt;&lt;a href=&#34;#cb14-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb14-3&#34;&gt;&lt;a href=&#34;#cb14-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;alpha_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb14-4&#34;&gt;&lt;a href=&#34;#cb14-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb14-5&#34;&gt;&lt;a href=&#34;#cb14-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;x &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;10&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;169&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb14-6&#34;&gt;&lt;a href=&#34;#cb14-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;z &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;400&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb14-7&#34;&gt;&lt;a href=&#34;#cb14-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;epsilon_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;4&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb14-8&#34;&gt;&lt;a href=&#34;#cb14-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;epsilon_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb14-9&#34;&gt;&lt;a href=&#34;#cb14-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb14-10&#34;&gt;&lt;a href=&#34;#cb14-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;pi_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (alpha_0 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; beta_0) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb14-11&#34;&gt;&lt;a href=&#34;#cb14-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;pi_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (&lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt;beta_2) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb14-12&#34;&gt;&lt;a href=&#34;#cb14-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;pi_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; alpha_2 &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb14-13&#34;&gt;&lt;a href=&#34;#cb14-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;u &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (epsilon_2 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; epsilon_1) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then, we calculate P and Q&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb15&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb15-1&#34;&gt;&lt;a href=&#34;#cb15-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;p &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; pi_0 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; pi_1 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; pi_2 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; z &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; u&lt;/span&gt;
+&lt;span id=&#34;cb15-2&#34;&gt;&lt;a href=&#34;#cb15-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;q &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_0 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_1 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; p &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_2 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon_1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;run-regression-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Run Regression&lt;/h2&gt;
+&lt;p&gt;The regressions we try to run:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Q=a_0+a_1P+a_2Z+\epsilon_1\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Q=b_0+b_1P+b_2X+\epsilon_2\]&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math display&#34;&gt;\[Q=c_0+c_1P+c_2X+c_3Z+\epsilon_3\]&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = q ~ 1 + p + z)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -181.232  -54.685   -4.886   55.174  213.415 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) -3.25495    8.50707  -0.383    0.703    
+## p           -0.64957    0.07829  -8.297 6.24e-13 ***
+## z            0.78185    0.04129  18.935  &amp;lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 83.36 on 97 degrees of freedom
+## Multiple R-squared:  0.8623,	Adjusted R-squared:  0.8595 
+## F-statistic: 303.8 on 2 and 97 DF,  p-value: &amp;lt; 2.2e-16
+## 
+## Call:
+## lm(formula = q ~ 1 + p + x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.5079  -1.7750  -0.0509   2.1640   8.6378 
+## 
+## Coefficients:
+##             Estimate Std. Error  t value Pr(&amp;gt;|t|)    
+## (Intercept)  0.41784    0.38371    1.089    0.279    
+## p            1.00111    0.00196  510.641   &amp;lt;2e-16 ***
+## x           -0.99778    0.00211 -472.878   &amp;lt;2e-16 ***
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 3.761 on 97 degrees of freedom
+## Multiple R-squared:  0.9997,	Adjusted R-squared:  0.9997 
+## F-statistic: 1.729e+05 on 2 and 97 DF,  p-value: &amp;lt; 2.2e-16
+## 
+## Call:
+## lm(formula = q ~ 1 + p + x + z)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -11.5659  -1.9775  -0.1094   2.3549   8.7502 
+## 
+## Coefficients:
+##              Estimate Std. Error  t value Pr(&amp;gt;|t|)    
+## (Intercept)  0.385370   0.381107    1.011    0.314    
+## p            1.014194   0.008340  121.607   &amp;lt;2e-16 ***
+## x           -1.004335   0.004569 -219.836   &amp;lt;2e-16 ***
+## z           -0.006509   0.004034   -1.613    0.110    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 3.731 on 96 degrees of freedom
+## Multiple R-squared:  0.9997,	Adjusted R-squared:  0.9997 
+## F-statistic: 1.172e+05 on 3 and 96 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can put together the steps above and formulate a function to return
+the coefficients.&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb17&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb17-1&#34;&gt;&lt;a href=&#34;#cb17-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;get_coefficients &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;cf&#34;&gt;function&lt;/span&gt;() {&lt;/span&gt;
+&lt;span id=&#34;cb17-2&#34;&gt;&lt;a href=&#34;#cb17-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-3&#34;&gt;&lt;a href=&#34;#cb17-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-4&#34;&gt;&lt;a href=&#34;#cb17-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    alpha_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-5&#34;&gt;&lt;a href=&#34;#cb17-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-6&#34;&gt;&lt;a href=&#34;#cb17-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    x &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;10&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;169&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb17-7&#34;&gt;&lt;a href=&#34;#cb17-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    z &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;5&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;400&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb17-8&#34;&gt;&lt;a href=&#34;#cb17-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;4&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb17-9&#34;&gt;&lt;a href=&#34;#cb17-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    epsilon_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;rnorm&lt;/span&gt;(&lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;0&lt;/span&gt;, &lt;span class=&#34;dv&#34;&gt;100&lt;/span&gt;)&lt;/span&gt;
+&lt;span id=&#34;cb17-10&#34;&gt;&lt;a href=&#34;#cb17-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-11&#34;&gt;&lt;a href=&#34;#cb17-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    pi_0 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (alpha_0 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; beta_0) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb17-12&#34;&gt;&lt;a href=&#34;#cb17-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    pi_1 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (&lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt;beta_2) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb17-13&#34;&gt;&lt;a href=&#34;#cb17-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    pi_2 &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; alpha_2 &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb17-14&#34;&gt;&lt;a href=&#34;#cb17-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    u &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; (epsilon_2 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; epsilon_1) &lt;span class=&#34;sc&#34;&gt;/&lt;/span&gt; (beta_1 &lt;span class=&#34;sc&#34;&gt;-&lt;/span&gt; alpha_1)&lt;/span&gt;
+&lt;span id=&#34;cb17-15&#34;&gt;&lt;a href=&#34;#cb17-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-16&#34;&gt;&lt;a href=&#34;#cb17-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    p &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; pi_0 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; pi_1 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; pi_2 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; z &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; u&lt;/span&gt;
+&lt;span id=&#34;cb17-17&#34;&gt;&lt;a href=&#34;#cb17-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    q &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; beta_0 &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_1 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; p &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; beta_2 &lt;span class=&#34;sc&#34;&gt;*&lt;/span&gt; x &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; epsilon_1&lt;/span&gt;
+&lt;span id=&#34;cb17-18&#34;&gt;&lt;a href=&#34;#cb17-18&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-19&#34;&gt;&lt;a href=&#34;#cb17-19&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    a_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(q &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; p &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; z) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-20&#34;&gt;&lt;a href=&#34;#cb17-20&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-21&#34;&gt;&lt;a href=&#34;#cb17-21&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb17-22&#34;&gt;&lt;a href=&#34;#cb17-22&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    b_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(q &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; p &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-23&#34;&gt;&lt;a href=&#34;#cb17-23&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-24&#34;&gt;&lt;a href=&#34;#cb17-24&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb17-25&#34;&gt;&lt;a href=&#34;#cb17-25&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    c_hat &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;lm&lt;/span&gt;(q &lt;span class=&#34;sc&#34;&gt;~&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; p &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; x &lt;span class=&#34;sc&#34;&gt;+&lt;/span&gt; z) &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-26&#34;&gt;&lt;a href=&#34;#cb17-26&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        &lt;span class=&#34;fu&#34;&gt;coef&lt;/span&gt;() &lt;span class=&#34;sc&#34;&gt;%&amp;gt;%&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-27&#34;&gt;&lt;a href=&#34;#cb17-27&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;        .[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;]&lt;/span&gt;
+&lt;span id=&#34;cb17-28&#34;&gt;&lt;a href=&#34;#cb17-28&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb17-29&#34;&gt;&lt;a href=&#34;#cb17-29&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    &lt;span class=&#34;fu&#34;&gt;return&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(a_hat, b_hat, c_hat))&lt;/span&gt;
+&lt;span id=&#34;cb17-30&#34;&gt;&lt;a href=&#34;#cb17-30&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then, repeatly run it 1000 times, and gather the coefficient lists&lt;/p&gt;
+&lt;div class=&#34;sourceCode&#34; id=&#34;cb18&#34;&gt;&lt;pre class=&#34;sourceCode r&#34;&gt;&lt;code class=&#34;sourceCode r&#34;&gt;&lt;span id=&#34;cb18-1&#34;&gt;&lt;a href=&#34;#cb18-1&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;a_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb18-2&#34;&gt;&lt;a href=&#34;#cb18-2&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;b_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb18-3&#34;&gt;&lt;a href=&#34;#cb18-3&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;c_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;()&lt;/span&gt;
+&lt;span id=&#34;cb18-4&#34;&gt;&lt;a href=&#34;#cb18-4&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb18-5&#34;&gt;&lt;a href=&#34;#cb18-5&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;cf&#34;&gt;for&lt;/span&gt; (i &lt;span class=&#34;cf&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;dv&#34;&gt;1000&lt;/span&gt;) {&lt;/span&gt;
+&lt;span id=&#34;cb18-6&#34;&gt;&lt;a href=&#34;#cb18-6&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    a_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(a_hat_list, &lt;span class=&#34;fu&#34;&gt;get_coefficients&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;1&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb18-7&#34;&gt;&lt;a href=&#34;#cb18-7&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    b_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(b_hat_list, &lt;span class=&#34;fu&#34;&gt;get_coefficients&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;2&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb18-8&#34;&gt;&lt;a href=&#34;#cb18-8&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;    c_hat_list &lt;span class=&#34;ot&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;fu&#34;&gt;c&lt;/span&gt;(c_hat_list, &lt;span class=&#34;fu&#34;&gt;get_coefficients&lt;/span&gt;()[&lt;span class=&#34;dv&#34;&gt;3&lt;/span&gt;])&lt;/span&gt;
+&lt;span id=&#34;cb18-9&#34;&gt;&lt;a href=&#34;#cb18-9&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;}&lt;/span&gt;
+&lt;span id=&#34;cb18-10&#34;&gt;&lt;a href=&#34;#cb18-10&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;/span&gt;
+&lt;span id=&#34;cb18-11&#34;&gt;&lt;a href=&#34;#cb18-11&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;co&#34;&gt;# print out the result&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb18-12&#34;&gt;&lt;a href=&#34;#cb18-12&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(a_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb18-13&#34;&gt;&lt;a href=&#34;#cb18-13&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] -0.4830255&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb18-14&#34;&gt;&lt;a href=&#34;#cb18-14&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(b_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb18-15&#34;&gt;&lt;a href=&#34;#cb18-15&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9998708&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;cb18-16&#34;&gt;&lt;a href=&#34;#cb18-16&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;fu&#34;&gt;print&lt;/span&gt;(&lt;span class=&#34;fu&#34;&gt;mean&lt;/span&gt;(c_hat_list))&lt;/span&gt;
+&lt;span id=&#34;cb18-17&#34;&gt;&lt;a href=&#34;#cb18-17&#34; tabindex=&#34;-1&#34;&gt;&lt;/a&gt;&lt;span class=&#34;do&#34;&gt;## [1] 0.9967457&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;From the regression results, we can conclude that &lt;span class=&#34;math inline&#34;&gt;\(\hat{b}\)&lt;/span&gt; and
+&lt;span class=&#34;math inline&#34;&gt;\(\hat{c}\)&lt;/span&gt; are unbiased to 1.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Also, in the third regression we can see the coefficient of Z is
+insignificant&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;However, &lt;span class=&#34;math inline&#34;&gt;\(\hat{a}\)&lt;/span&gt; is not close to -1&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

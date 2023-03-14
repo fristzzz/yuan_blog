@@ -1,0 +1,455 @@
+---
+title: Experiment_01
+author: "210210304 王薪源"
+math: true
+date: '2023-03-14'
+categories: [econometrics]
+tags: []
+hidden: no
+toc: true
+toc_float: true
+theme: stack
+comments: yes
+output:
+    blogdown::html_page:
+        toc: true
+        fig_width: 6
+        highlight: haddock
+
+---
+
+# Simulation Experiment I
+
+## Generate Data
+
+Firstly, generate the $X_1$, $X_2$, and $\epsilon_i$
+
+```{r}
+#| cache: true
+library(magrittr) # 管道符所用的库
+x.1 <- runif(100, min = 0, max = 5)
+x.2 <- rnorm(100, mean = 5, sd = 2) + 0.5 * x.1
+epsilon <- rnorm(100, mean = 0, sd = 1)
+y <- 5 + 1 * x.1 + 0.5 * x.2 + epsilon
+```
+
+Then run the model, estimate $\hat{\beta}_0$ and $\hat{\beta}_1$ by the
+following model: $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i$$
+
+```{r}
+#| collapse: true
+#| cache: true
+lm.y1 <- lm(y ~ 1 + x.1 + x.2)
+summary(lm.y1)
+coef(lm.y1)
+```
+
+estimate $\hat{\alpha}_0$ and $\hat{\alpha}_1$ by the following model:
+$$Y_i=\alpha_0+\alpha_1X_{1i}+u_i$$
+
+```{r}
+#| collapse: true
+#| cache: true
+lm.y2 <- lm(y ~ 1 + x.1)
+summary(lm.y2)
+coef(lm.y2)
+```
+
+## Run Regression
+
+Repeat 1000 times:
+
+```{r}
+#| collapse: true
+#| cache: true
+beta <- c()
+alpha <- c()
+for (i in 1:1000) {
+    x.1 <- runif(100, min = 0, max = 5)
+    x.2 <- rnorm(100, mean = 5, sd = 2) + 0.5 * x.1
+    epsilon <- rnorm(100, mean = 0, sd = 1)
+    y <- 5 + 1 * x.1 + 0.5 * x.2 + epsilon
+    beta <- lm(y ~ 1 + x.1 + x.2) %>%
+        coef() %>%
+        .[2] %>%
+        c(beta, .)
+    alpha <- lm(y ~ 1 + x.1) %>%
+        coef() %>%
+        .[2] %>%
+        c(alpha, .)
+}
+
+print(mean(beta))
+print(mean(alpha))
+```
+
+From the result, we can see that $\beta_1$ is **close** to the true
+value, comparing to the real value, while $\alpha_1$ is not close to the
+true value.
+
+# Simulation Experiment II
+
+Model: $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i$$
+
+Estimating models:
+
+1.  $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}\epsilon$$
+2.  $$Y_i=\alpha_0+\alpha_1X_{1i}+u_i$$
+
+## Generate Data
+
+This time, we put the result of coefficient of $x_1$ in a function.
+
+```{r}
+#| collapse: true
+coef_of_x1 <- function() {
+    beta_zero <- 5
+    beta_one <- 1
+    beta_two <- 0.5
+    x_1 <- runif(100, 0, 5)
+    x_2 <- rnorm(100, mean = 5, sd = 2)
+    epsilon <- rnorm(100, mean = 0, sd = 1)
+
+    # Follows the model:
+    # beta one hat:
+    y <- beta_zero + beta_one * x_1 + beta_two * x_2 + epsilon
+    beta_one_hat <- lm(y ~ 1 + x_1 + x_2) %>%
+        coef() %>%
+        .[2]
+    alpha_one_hat <- lm(y ~ 1 + x_1) %>%
+        coef() %>%
+        .[2]
+    c(beta_one_hat, alpha_one_hat) %>% return()
+}
+```
+
+## Run Regression
+
+Then, repeat it and get the mean values of $\hat{\beta}_1$ and
+$\hat{\alpha}_1$
+
+```{r}
+#| collapse: true
+#| cache: true
+beta_one_hat_list <- c()
+alpha_one_hat_list <- c()
+for (i in 1:1000) {
+    beta_one_hat_list <- c(beta_one_hat_list, coef_of_x1()[1])
+    alpha_one_hat_list <- c(alpha_one_hat_list, coef_of_x1()[2])
+}
+# mean value of beta one hat:
+print(mean(beta_one_hat_list))
+# mean value of alpha one hat:
+print(mean(alpha_one_hat_list))
+```
+
+From the result, we can see that $\hat{\beta}_1$ and $\hat{\alpha}_1$
+are both **close** to the true value.
+
+# Simulation Experiment III
+
+Model: $$Y_1=\beta_0+\beta_1X_{1i}+\epsilon_i$$
+
+Estimating models:
+
+1.  $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2X_{2i}+\epsilon_i$$
+2.  $$Y_i=\alpha_0+\alpha_1X_{1i}+u_i$$
+
+## Generate Data
+
+Same thing.
+
+```{r}
+#| collapse: true
+coef_of_x1 <- function() {
+    beta_zero <- 5
+    beta_one <- 1
+    x_1 <- runif(100, 0, 5)
+    x_2 <- rnorm(100, 5, 2)
+    epsilon <- rnorm(100) # 默认为标准正态分布
+    y <- beta_zero + beta_one * x_1 + epsilon
+    beta_one_hat <- lm(y ~ 1 + x_1 + x_2) %>%
+        coef() %>%
+        .[2]
+    alpha_one_hat <- lm(y ~ 1 + x_1) %>%
+        coef() %>%
+        .[2]
+    return(c(beta_one_hat, alpha_one_hat))
+}
+```
+
+## Run Regression
+
+repeat 1000 times:
+
+```{r}
+#| collapse: true
+#| cache: true
+beta_one_hat_list <- c()
+alpha_one_hat_list <- c()
+for (i in 1:1000) {
+    beta_one_hat_list <- c(beta_one_hat_list, coef_of_x1()[1])
+    alpha_one_hat_list <- c(alpha_one_hat_list, coef_of_x1()[2])
+}
+
+# mean value of beta one hat
+print(mean(beta_one_hat_list))
+# mean value of alpha one hat
+print(mean(alpha_one_hat_list))
+```
+
+The result shows that both $\hat{\beta}_1$ and $\hat{\alpha}_1$ are
+**close** to the true value.
+
+实际上，在第一个回归中，$x_2$ 的系数显著水平不高（或者说在0.01不显著）
+
+```{r}
+#| echo: false
+#| cache: true
+beta_zero <- 5
+beta_one <- 1
+x_1 <- runif(100, 0, 5)
+x_2 <- rnorm(100, 5, 2)
+epsilon <- rnorm(100)
+y <- beta_zero + beta_one * x_1 + epsilon
+beta_one_hat <- lm(y ~ 1 + x_1 + x_2)
+summary(beta_one_hat)
+```
+
+# Simulation Experiment IV
+
+Model: $$Y_i=\beta_0+\beta_1X_{1i}+\epsilon_i$$
+
+Estimating models:
+
+1.  $$Y_i=\beta_0+\beta_1\tilde{X}_{1i}+\epsilon_i$$
+2.  $$Y_i=\alpha_0+\alpha_1X_{1i}+\epsilon_i$$
+
+## Generate Data
+
+```{r}
+#| cache: true
+coef_of_x1 <- function() {
+    beta_zero <- 5
+    beta_one <- 1
+    x_1 <- runif(100, 0, 5)
+    ita <- rnorm(100, 0, 2)
+    epsilon <- rnorm(100)
+    x_1_tilde <- x_1 + ita
+    y <- beta_zero + beta_one * x_1 + epsilon
+    beta_one_hat <- lm(y ~ 1 + x_1_tilde) %>%
+        coef() %>%
+        .[2]
+    alpha_one_hat <- lm(y ~ 1 + x_1) %>%
+        coef() %>%
+        .[2]
+    return(c(beta_one_hat, alpha_one_hat))
+}
+```
+
+## Run Regression
+
+```{r}
+#| collapse: true
+#| cache: true
+beta_one_hat_list <- c()
+alpha_one_hat_list <- c()
+
+for (i in 1:1000) {
+    beta_one_hat_list <- c(beta_one_hat_list, coef_of_x1()[1])
+    alpha_one_hat_list <- c(alpha_one_hat_list, coef_of_x1()[2])
+}
+# mean value of beta one hat
+print(mean(beta_one_hat_list))
+
+# mean value of alpha one hat
+print(mean(alpha_one_hat_list))
+```
+
+So, $\tilde{X}_{1i}$'s coefficient $\hat{\beta}_1$ is **close** to the
+true value, while the coefficient of $X_{1i}$, $\hat{\alpha}_1$ is **not
+close** to the true value.
+
+# Simulation Experiment V
+
+Model: $$Y_i=\beta_0+\beta_1X_{1i}+\epsilon_i$$
+
+Estimating models:
+
+1.  $$\tilde{Y_i}=\beta_0+\beta_1X_{1i}+\epsilon_1$$
+2.  $$Y_i=\alpha_0+\alpha_1X_{1i}+u_i$$
+
+## Generate Data
+
+```{r}
+#| cache: true
+coef_of_x1 <- function() {
+    beta_zero <- 5
+    beta_one <- 1
+    x_1 <- runif(100, 0, 5)
+    ita <- rnorm(100, 0, 2)
+    epsilon <- rnorm(100)
+    y <- beta_zero + beta_one * x_1 + epsilon
+    y_tilde <- y + ita
+    beta_one_hat <- lm(y_tilde ~ 1 + x_1) %>%
+        coef() %>%
+        .[2]
+    alpha_one_hat <- lm(y ~ 1 + x_1) %>%
+        coef() %>%
+        .[2]
+    return(c(beta_one_hat, alpha_one_hat))
+}
+```
+
+## Run Regression
+
+```{r}
+#| collapse: true
+#| cache: true
+beta_one_hat_list <- c()
+alpha_one_hat_list <- c()
+for (i in 1:1000) {
+    beta_one_hat_list <- c(beta_one_hat_list, coef_of_x1()[1])
+    alpha_one_hat_list <- c(alpha_one_hat_list, coef_of_x1()[2])
+}
+
+# mean value of beta one hat
+print(mean(beta_one_hat_list))
+
+# mean value of alpha one hat
+print(mean(alpha_one_hat_list))
+```
+
+We can see from the result that coefficients of $X_{1i}$ in both models
+are **close** to the true value.
+
+# Simulation Experiment VI
+
+Supply curve:
+
+$$Q_s=\beta_0+\beta_1P+\beta_2X+\epsilon_1$$
+
+Demand curve:
+
+$$Q_d=\alpha_0+\alpha_1P+\alpha_2Z+\epsilon_2$$
+
+In equilibrium:
+
+$$P=\pi_0+\pi_1X+\pi_2Z+u$$
+
+## Generate Data
+
+Firstly, we simulate the variables.
+
+```{r}
+#| cache: true
+alpha_0 <- beta_0 <- 0
+alpha_1 <- beta_2 <- -1
+alpha_2 <- beta_1 <- 1
+
+x <- rnorm(100, 10, 169)
+z <- rnorm(100, 5, 400)
+epsilon_1 <- rnorm(100, 0, 4)
+epsilon_2 <- rnorm(100, 0, 100)
+
+pi_0 <- (alpha_0 - beta_0) / (beta_1 - alpha_1)
+pi_1 <- (-beta_2) / (beta_1 - alpha_1)
+pi_2 <- alpha_2 / (beta_1 - alpha_1)
+u <- (epsilon_2 - epsilon_1) / (beta_1 - alpha_1)
+```
+
+Then, we calculate P and Q
+
+```{r}
+#| cache: true
+p <- pi_0 + pi_1 * x + pi_2 * z + u
+q <- beta_0 + beta_1 * p + beta_2 * x + epsilon_1
+```
+
+## Run Regression
+
+The regressions we try to run:
+
+1.  $$Q=a_0+a_1P+a_2Z+\epsilon_1$$
+2.  $$Q=b_0+b_1P+b_2X+\epsilon_2$$
+3.  $$Q=c_0+c_1P+c_2X+c_3Z+\epsilon_3$$
+
+```{r}
+#| collapse: true
+#| cache: true
+#| echo: false
+lm.1 <- lm(q ~ 1 + p + z)
+summary(lm.1)
+
+lm.2 <- lm(q ~ 1 + p + x)
+summary(lm.2)
+
+lm.3 <- lm(q ~ 1 + p + x + z)
+summary(lm.3)
+```
+
+We can put together the steps above and formulate a function to return
+the coefficients.
+
+```{r}
+#| cache: true
+get_coefficients <- function() {
+    alpha_0 <- beta_0 <- 0
+    alpha_1 <- beta_2 <- -1
+    alpha_2 <- beta_1 <- 1
+
+    x <- rnorm(100, 10, 169)
+    z <- rnorm(100, 5, 400)
+    epsilon_1 <- rnorm(100, 0, 4)
+    epsilon_2 <- rnorm(100, 0, 100)
+
+    pi_0 <- (alpha_0 - beta_0) / (beta_1 - alpha_1)
+    pi_1 <- (-beta_2) / (beta_1 - alpha_1)
+    pi_2 <- alpha_2 / (beta_1 - alpha_1)
+    u <- (epsilon_2 - epsilon_1) / (beta_1 - alpha_1)
+
+    p <- pi_0 + pi_1 * x + pi_2 * z + u
+    q <- beta_0 + beta_1 * p + beta_2 * x + epsilon_1
+
+    a_hat <- lm(q ~ 1 + p + z) %>%
+        coef() %>%
+        .[2]
+    b_hat <- lm(q ~ 1 + p + x) %>%
+        coef() %>%
+        .[2]
+    c_hat <- lm(q ~ 1 + p + x + z) %>%
+        coef() %>%
+        .[2]
+
+    return(c(a_hat, b_hat, c_hat))
+}
+```
+
+Then, repeatly run it 1000 times, and gather the coefficient lists
+
+```{r}
+#| collapse: true
+#| cache: true
+a_hat_list <- c()
+b_hat_list <- c()
+c_hat_list <- c()
+
+for (i in 1:1000) {
+    a_hat_list <- c(a_hat_list, get_coefficients()[1])
+    b_hat_list <- c(b_hat_list, get_coefficients()[2])
+    c_hat_list <- c(c_hat_list, get_coefficients()[3])
+}
+
+# print out the result
+print(mean(a_hat_list))
+print(mean(b_hat_list))
+print(mean(c_hat_list))
+```
+
+-   From the regression results, we can conclude that $\hat{b}$ and
+    $\hat{c}$ are unbiased to 1.
+
+-   Also, in the third regression we can see the coefficient of Z is
+    insignificant
+
+-   However, $\hat{a}$ is not close to -1

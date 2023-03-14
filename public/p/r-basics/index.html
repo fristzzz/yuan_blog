@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='入门 获取帮助 工作空间 示例：
+1 2 3 4 5 6 7 setwd(&amp;#34;C:/myprojects/project1&amp;#34;) options() options(digits=3) # 三位数字 x &amp;lt;- runif(20) # 20个均匀分布 summary(x) hist(x) # 直方图 q() 输入和输出 输入 source(&amp;quot;filename&amp;quot;)可在当前会话中执行一个脚本。
+文本输出 sink(&amp;quot;filename&amp;quot;)将输出重定向到文件中，默认覆盖。 append=TRUE可将文本追加到文件后 split=TRUE可将输出同时发送到屏幕和输出文件中
+图形输出 示例 1 2 3 4 5 6 7 source(&amp;#34;script1.R&amp;#34;) sink(&amp;#34;myoutput&amp;#34;, append=TRUE, split=TRUE) pdf(&amp;#34;mygraphs.pdf&amp;#34;) source(&amp;#34;script2.R&amp;#34;) sink() # 关闭输出到文件 dev.off() # 将输出返回到终端 source(&amp;#34;script3.R&amp;#34;) 结果重用 1 2 3 4 5 lm(mpg~wt, data=mtcars, data=mtcarts) lmfit &amp;lt;- lm(mpg~wt, data=mtcarts) # 保存结果 summary(lmfit) # 显示分析结果的统计概要 plot(lmfit) # 生成回归诊断图形 predict(lmfit, mynewdata) # 进行预测 创建数据集 数据集通常是由数据构成的一个矩形数组，行表示观测，列表示变量。'>
+<title>r basics</title>
+
+<link rel='canonical' href='https://zzzzorange.netlify.com/p/r-basics/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='r basics'>
+<meta property='og:description' content='入门 获取帮助 工作空间 示例：
+1 2 3 4 5 6 7 setwd(&amp;#34;C:/myprojects/project1&amp;#34;) options() options(digits=3) # 三位数字 x &amp;lt;- runif(20) # 20个均匀分布 summary(x) hist(x) # 直方图 q() 输入和输出 输入 source(&amp;quot;filename&amp;quot;)可在当前会话中执行一个脚本。
+文本输出 sink(&amp;quot;filename&amp;quot;)将输出重定向到文件中，默认覆盖。 append=TRUE可将文本追加到文件后 split=TRUE可将输出同时发送到屏幕和输出文件中
+图形输出 示例 1 2 3 4 5 6 7 source(&amp;#34;script1.R&amp;#34;) sink(&amp;#34;myoutput&amp;#34;, append=TRUE, split=TRUE) pdf(&amp;#34;mygraphs.pdf&amp;#34;) source(&amp;#34;script2.R&amp;#34;) sink() # 关闭输出到文件 dev.off() # 将输出返回到终端 source(&amp;#34;script3.R&amp;#34;) 结果重用 1 2 3 4 5 lm(mpg~wt, data=mtcars, data=mtcarts) lmfit &amp;lt;- lm(mpg~wt, data=mtcarts) # 保存结果 summary(lmfit) # 显示分析结果的统计概要 plot(lmfit) # 生成回归诊断图形 predict(lmfit, mynewdata) # 进行预测 创建数据集 数据集通常是由数据构成的一个矩形数组，行表示观测，列表示变量。'>
+<meta property='og:url' content='https://zzzzorange.netlify.com/p/r-basics/'>
+<meta property='og:site_name' content='Yuan&#39;s Studio'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='r language' /><meta property='article:published_time' content='2023-03-04T13:40:58&#43;00:00'/><meta property='article:modified_time' content='2023-03-04T13:40:58&#43;00:00'/>
+<meta name="twitter:title" content="r basics">
+<meta name="twitter:description" content="入门 获取帮助 工作空间 示例：
+1 2 3 4 5 6 7 setwd(&amp;#34;C:/myprojects/project1&amp;#34;) options() options(digits=3) # 三位数字 x &amp;lt;- runif(20) # 20个均匀分布 summary(x) hist(x) # 直方图 q() 输入和输出 输入 source(&amp;quot;filename&amp;quot;)可在当前会话中执行一个脚本。
+文本输出 sink(&amp;quot;filename&amp;quot;)将输出重定向到文件中，默认覆盖。 append=TRUE可将文本追加到文件后 split=TRUE可将输出同时发送到屏幕和输出文件中
+图形输出 示例 1 2 3 4 5 6 7 source(&amp;#34;script1.R&amp;#34;) sink(&amp;#34;myoutput&amp;#34;, append=TRUE, split=TRUE) pdf(&amp;#34;mygraphs.pdf&amp;#34;) source(&amp;#34;script2.R&amp;#34;) sink() # 关闭输出到文件 dev.off() # 将输出返回到终端 source(&amp;#34;script3.R&amp;#34;) 结果重用 1 2 3 4 5 lm(mpg~wt, data=mtcars, data=mtcarts) lmfit &amp;lt;- lm(mpg~wt, data=mtcarts) # 保存结果 summary(lmfit) # 显示分析结果的统计概要 plot(lmfit) # 生成回归诊断图形 predict(lmfit, mynewdata) # 进行预测 创建数据集 数据集通常是由数据构成的一个矩形数组，行表示观测，列表示变量。">
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu40fce395f67781a6a2bbc1a7ee0cff83_10067_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">♿</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Yuan&#39;s Studio</a></h1>
+            <h2 class="site-description">Be water, my friend.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/fristzzz'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://zzzzorange.netlify.com/" selected>English</option>
+                        
+                            <option value="https://zzzzorange.netlify.com/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#获取帮助">获取帮助</a></li>
+    <li><a href="#工作空间">工作空间</a></li>
+    <li><a href="#输入和输出">输入和输出</a>
+      <ol>
+        <li><a href="#输入">输入</a></li>
+        <li><a href="#文本输出">文本输出</a></li>
+        <li><a href="#图形输出">图形输出</a></li>
+        <li><a href="#示例">示例</a></li>
+      </ol>
+    </li>
+    <li><a href="#结果重用">结果重用</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#数据结构">数据结构</a>
+      <ol>
+        <li><a href="#向量">向量</a></li>
+        <li><a href="#矩阵">矩阵</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#数据框">数据框</a>
+          <ol>
+            <li><a href="#attach-detach-and-with">attach(), detach() and with()</a></li>
+            <li><a href="#实例标识符">实例标识符</a></li>
+          </ol>
+        </li>
+        <li><a href="#因子factor">因子factor</a></li>
+        <li><a href="#列表list">列表list</a></li>
+      </ol>
+    </li>
+    <li><a href="#数据的输入">数据的输入</a>
+      <ol>
+        <li><a href="#键盘输入">键盘输入</a></li>
+        <li><a href="#从带分隔符的文本文件导入数据">从带分隔符的文本文件导入数据</a></li>
+        <li><a href="#导入excel数据">导入excel数据</a></li>
+        <li><a href="#导入xml数据">导入XML数据</a></li>
+        <li><a href="#从网页抓取数据">从网页抓取数据</a></li>
+        <li><a href="#导入spss数据">导入SPSS数据</a></li>
+        <li><a href="#导入stata数据">导入Stata数据</a></li>
+      </ol>
+    </li>
+    <li><a href="#数据集的标注">数据集的标注</a>
+      <ol>
+        <li><a href="#变量标签">变量标签</a></li>
+        <li><a href="#值标签">值标签</a></li>
+      </ol>
+    </li>
+    <li><a href="#处理数据对象的实用函数">处理数据对象的实用函数</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#简单例子">简单例子</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/r-language/" >
+                r language
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/r-basics/">r basics</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 04, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="入门">入门</h1>
+<h2 id="获取帮助">获取帮助</h2>
+<hr>
+<p><img src="/p/r-basics/help.png"
+	width="859"
+	height="319"
+	srcset="/p/r-basics/help_huac371488af52de26b590fac6aa856440_108713_480x0_resize_box_3.png 480w, /p/r-basics/help_huac371488af52de26b590fac6aa856440_108713_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="269"
+		data-flex-basis="646px"
+	
+></p>
+<h2 id="工作空间">工作空间</h2>
+<hr>
+<p><img src="/p/r-basics/workspace.png"
+	width="858"
+	height="435"
+	srcset="/p/r-basics/workspace_hu091f3e2e3481ae86d27fa391a210838a_143734_480x0_resize_box_3.png 480w, /p/r-basics/workspace_hu091f3e2e3481ae86d27fa391a210838a_143734_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="197"
+		data-flex-basis="473px"
+	
+></p>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">setwd</span><span class="p">(</span><span class="s">&#34;C:/myprojects/project1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">options</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nf">options</span><span class="p">(</span><span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="c1"># 三位数字</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="m">20</span><span class="p">)</span> <span class="c1"># 20个均匀分布</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">hist</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># 直方图</span>
+</span></span><span class="line"><span class="cl"><span class="nf">q</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="输入和输出">输入和输出</h2>
+<h3 id="输入">输入</h3>
+<p><code>source(&quot;filename&quot;)</code>可在当前会话中执行一个脚本。</p>
+<h3 id="文本输出">文本输出</h3>
+<p><code>sink(&quot;filename&quot;)</code>将输出重定向到文件中，默认覆盖。
+<code>append=TRUE</code>可将文本追加到文件后
+<code>split=TRUE</code>可将输出同时发送到屏幕和输出文件中</p>
+<h3 id="图形输出">图形输出</h3>
+<p><img src="/p/r-basics/picture_output.png"
+	width="675"
+	height="257"
+	srcset="/p/r-basics/picture_output_hu3ae1dc3a0757bbc9bdd418be5feb91f8_45699_480x0_resize_box_3.png 480w, /p/r-basics/picture_output_hu3ae1dc3a0757bbc9bdd418be5feb91f8_45699_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="262"
+		data-flex-basis="630px"
+	
+></p>
+<h3 id="示例">示例</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;script1.R&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sink</span><span class="p">(</span><span class="s">&#34;myoutput&#34;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">pdf</span><span class="p">(</span><span class="s">&#34;mygraphs.pdf&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;script2.R&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sink</span><span class="p">()</span> <span class="c1"># 关闭输出到文件</span>
+</span></span><span class="line"><span class="cl"><span class="nf">dev.off</span><span class="p">()</span> <span class="c1"># 将输出返回到终端</span>
+</span></span><span class="line"><span class="cl"><span class="nf">source</span><span class="p">(</span><span class="s">&#34;script3.R&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="结果重用">结果重用</h2>
+<hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcars</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcarts</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">lmfit</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">wt</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">mtcarts</span><span class="p">)</span> <span class="c1"># 保存结果</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">lmfit</span><span class="p">)</span> <span class="c1"># 显示分析结果的统计概要</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">lmfit</span><span class="p">)</span> <span class="c1"># 生成回归诊断图形</span>
+</span></span><span class="line"><span class="cl"><span class="nf">predict</span><span class="p">(</span><span class="n">lmfit</span><span class="p">,</span> <span class="n">mynewdata</span><span class="p">)</span> <span class="c1"># 进行预测</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="创建数据集">创建数据集</h1>
+<p>数据集通常是由数据构成的一个矩形数组，行表示<strong>观测</strong>，列表示<strong>变量</strong>。</p>
+<p>不同的行业对于数据集的行和列叫法不同。统计学家称它们为观测（observation）和变量（variable），数据库分析师则称其为记录（record）和字段（field），数据挖掘和机器学习学科的研究者则把它们叫作示例（example）和属性（attribute）</p>
+<h2 id="数据结构">数据结构</h2>
+<hr>
+<p><img src="/p/r-basics/data_structures.png"
+	width="638"
+	height="391"
+	srcset="/p/r-basics/data_structures_hu271696f24efe734eaedcc767cb29d09f_61830_480x0_resize_box_3.png 480w, /p/r-basics/data_structures_hu271696f24efe734eaedcc767cb29d09f_61830_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
+	
+></p>
+<h3 id="向量">向量</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="c1"># 单个向量中的数据必须拥有相同的类型或模式</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;one&#34;</span><span class="p">,</span> <span class="s">&#34;two&#34;</span><span class="p">,</span> <span class="s">&#34;three&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>标量是只含一个元素的向量， 如<code>f &lt;- 3</code></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="o">:</span><span class="m">20</span><span class="p">)</span> <span class="c1"># 创建5-20的数组</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">a</span>
+</span></span><span class="line"><span class="cl"> <span class="n">[1]</span>  <span class="m">5</span>  <span class="m">6</span>  <span class="m">7</span>  <span class="m">8</span>  <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="m">13</span> <span class="m">14</span> <span class="m">15</span> <span class="m">16</span> <span class="m">17</span> <span class="m">18</span> <span class="m">19</span> <span class="m">20</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">a[1</span><span class="o">:</span><span class="m">5</span><span class="n">]</span> <span class="c1"># 取元素1-5， r中索引从1开始</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">5</span> <span class="m">6</span> <span class="m">7</span> <span class="m">8</span> <span class="m">9</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">a</span><span class="nf">[c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span><span class="n">]</span> <span class="c1"># 取第1，3，5个元素</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">5</span> <span class="m">7</span> <span class="m">9</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>R语言中索引从1开始，不同于一般编程语言的从0开始</p>
+</blockquote>
+<h3 id="矩阵">矩阵</h3>
+<p>矩阵是一个二维数组，只是每个元素都拥有相同的模式（数值型、字符型或逻辑型）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span> <span class="m">20</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cells</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">24</span><span class="p">,</span> <span class="m">68</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rnames</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;R1&#34;</span><span class="p">,</span> <span class="s">&#34;R2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cnames</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;C1&#34;</span><span class="p">,</span> <span class="s">&#34;C2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mymatrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="c1"># 按行填充,默认按列</span>
+</span></span><span class="line"><span class="cl">				  <span class="n">dimnames</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">rnames</span><span class="p">,</span> <span class="n">cnames</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数组">数组</h3>
+<p>数组array与矩阵类似，但是维度可以大于2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">myarray</span> <span class="o">&lt;-</span> <span class="nf">array</span><span class="p">(</span><span class="o">*</span><span class="n">vector</span><span class="p">,</span> <span class="o">*</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">dimnames</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">dim1</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;a1&#34;</span><span class="p">,</span> <span class="s">&#34;a2&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">dim2</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;b1&#34;</span><span class="p">,</span> <span class="s">&#34;b2&#34;</span><span class="p">,</span> <span class="s">&#34;b3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">dim3</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;c1&#34;</span><span class="p">,</span> <span class="s">&#34;c2&#34;</span><span class="p">,</span> <span class="s">&#34;c3&#34;</span><span class="p">,</span> <span class="s">&#34;c4&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">24</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">),</span> <span class="n">dimnames</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">,</span> <span class="n">dim3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">z</span>
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="p">,</span> <span class="n">c1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">b1</span> <span class="n">b2</span> <span class="n">b3</span>
+</span></span><span class="line"><span class="cl"><span class="n">a1</span>  <span class="m">1</span>  <span class="m">3</span>  <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="n">a2</span>  <span class="m">2</span>  <span class="m">4</span>  <span class="m">6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="p">,</span> <span class="n">c2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">b1</span> <span class="n">b2</span> <span class="n">b3</span>
+</span></span><span class="line"><span class="cl"><span class="n">a1</span>  <span class="m">7</span>  <span class="m">9</span> <span class="m">11</span>
+</span></span><span class="line"><span class="cl"><span class="n">a2</span>  <span class="m">8</span> <span class="m">10</span> <span class="m">12</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="p">,</span> <span class="n">c3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">b1</span> <span class="n">b2</span> <span class="n">b3</span>
+</span></span><span class="line"><span class="cl"><span class="n">a1</span> <span class="m">13</span> <span class="m">15</span> <span class="m">17</span>
+</span></span><span class="line"><span class="cl"><span class="n">a2</span> <span class="m">14</span> <span class="m">16</span> <span class="m">18</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="p">,</span> <span class="n">c4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="n">b1</span> <span class="n">b2</span> <span class="n">b3</span>
+</span></span><span class="line"><span class="cl"><span class="n">a1</span> <span class="m">19</span> <span class="m">21</span> <span class="m">23</span>
+</span></span><span class="line"><span class="cl"><span class="n">a2</span> <span class="m">20</span> <span class="m">22</span> <span class="m">24</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数据框">数据框</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">mydata</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientID</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">age</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">34</span><span class="p">,</span> <span class="m">28</span><span class="p">,</span> <span class="m">53</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">diabetes</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;type1&#34;</span><span class="p">,</span> <span class="s">&#34;type2&#34;</span><span class="p">,</span> <span class="s">&#34;type1&#34;</span><span class="p">,</span> <span class="s">&#34;type1&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">status</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;poor&#34;</span><span class="p">,</span> <span class="s">&#34;improved&#34;</span><span class="p">,</span> <span class="s">&#34;excellent&#34;</span><span class="p">,</span> <span class="s">&#34;poor&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 每一列数据的模式必须唯一</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientdata</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">patientID</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientdata</span>
+</span></span><span class="line"><span class="cl">  <span class="n">patientID</span> <span class="n">age</span> <span class="n">diabetes</span>    <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         <span class="m">1</span>  <span class="m">25</span>    <span class="n">type1</span>      <span class="n">poor</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>         <span class="m">2</span>  <span class="m">34</span>    <span class="n">type2</span>  <span class="n">improved</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span>         <span class="m">3</span>  <span class="m">28</span>    <span class="n">type1</span> <span class="n">excellent</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>         <span class="m">4</span>  <span class="m">53</span>    <span class="n">type1</span>      <span class="n">poor</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 选取特定行</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientdata[1</span><span class="o">:</span><span class="m">2</span><span class="p">,</span> <span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">patientID</span> <span class="n">age</span> <span class="n">diabetes</span>   <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         <span class="m">1</span>  <span class="m">25</span>    <span class="n">type1</span>     <span class="n">poor</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>         <span class="m">2</span>  <span class="m">34</span>    <span class="n">type2</span> <span class="n">improved</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 选取特定列（观测变量）</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientdata[</span><span class="p">,</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">patientID</span> <span class="n">age</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>         <span class="m">1</span>  <span class="m">25</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>         <span class="m">2</span>  <span class="m">34</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span>         <span class="m">3</span>  <span class="m">28</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>         <span class="m">4</span>  <span class="m">53</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 通过$选取列</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">patientdata</span><span class="o">$</span><span class="n">age</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="m">25</span> <span class="m">34</span> <span class="m">28</span> <span class="m">53</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># table获取联列表</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="nf">table</span><span class="p">(</span><span class="n">patientdata</span><span class="o">$</span><span class="n">diabetes</span><span class="p">,</span> <span class="n">patientdata</span><span class="o">$</span><span class="n">status</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">excellent</span> <span class="n">improved</span> <span class="n">poor</span>
+</span></span><span class="line"><span class="cl">  <span class="n">type1</span>         <span class="m">1</span>        <span class="m">0</span>    <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="n">type2</span>         <span class="m">0</span>        <span class="m">1</span>    <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="attach-detach-and-with">attach(), detach() and with()</h4>
+<p>在每个变量名前都键入一次patientdata$可能会让人生厌，所以不妨走一些捷径。可以联合使用函数attach()和detach()或单独使用函数with()来简化代码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">mtcarts</span><span class="o">$</span><span class="n">mpg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">disp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="p">,</span> <span class="n">mtcars</span><span class="o">$</span><span class="n">wt</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上代码可以写成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">atach</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">summary</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">plot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">plot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">wt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">detach</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当对象名称不止一个时，这种方法有局限性，可能会与已存在变量冲突
+另一种方式是使用函数with()</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">with</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">print</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">mpg</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">plot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">disp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">plot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">wt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果需要创建在with() 结构以外存在的对象，使用特殊赋值符&laquo;-替代&lt;-</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">with</span><span class="p">(</span><span class="n">mtcars</span><span class="p">,</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">nokeepstats</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="n">keepstats</span> <span class="o">&lt;&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="实例标识符">实例标识符</h4>
+<p>实例标识符可以通过rowname选项指定</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">patientdata</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">patientID</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="n">patientID</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将patientID指定为R中标记各类打印输出和图形中实例名称所用的变量</p>
+<h3 id="因子factor">因子factor</h3>
+<p>类别变量和有序类别变量在R中称为因子(factor)</p>
+<p><strong>字符型变量</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">diabetes</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="s">&#34;type1&#34;</span> <span class="s">&#34;type2&#34;</span> <span class="s">&#34;type1&#34;</span> <span class="s">&#34;type1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">diabetes</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="n">diabetes</span><span class="p">)</span> <span class="c1"># 无序型</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">diabetes</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="n">type1</span> <span class="n">type2</span> <span class="n">type1</span> <span class="n">type1</span>
+</span></span><span class="line"><span class="cl"><span class="n">Levels</span><span class="o">:</span> <span class="n">type1</span> <span class="n">type2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="s">&#34;poor&#34;</span>      <span class="s">&#34;improved&#34;</span>  <span class="s">&#34;excellent&#34;</span> <span class="s">&#34;poor&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 有序型</span>
+</span></span><span class="line"><span class="cl"><span class="n">status</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">				 <span class="n">level</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;poor&#34;</span><span class="p">,</span> <span class="s">&#34;improved&#34;</span><span class="p">,</span> <span class="s">&#34;excellent&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="n">[1]</span> <span class="n">poor</span>      <span class="n">improved</span>  <span class="n">excellent</span> <span class="n">poor</span>
+</span></span><span class="line"><span class="cl"><span class="n">Levels</span><span class="o">:</span> <span class="n">poor</span> <span class="o">&lt;</span> <span class="n">improved</span> <span class="o">&lt;</span> <span class="n">excellent</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>数值型变量</strong>可以用levels和labels参数来编码成因子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">sex</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">),</span> <span class="n">labels</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;male&#34;</span><span class="p">,</span> <span class="s">&#34;female&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="列表list">列表list</h3>
+<p>列表允许你整合若干（可能无关的）对象到单个对象名下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">mylist</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">name1</span> <span class="o">=</span> <span class="n">obj1</span><span class="p">,</span> <span class="n">name2</span> <span class="o">=</span> <span class="n">obj2</span><span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数据的输入">数据的输入</h2>
+<hr>
+<h3 id="键盘输入">键盘输入</h3>
+<p>edit()可以打开一个临时的编辑器</p>
+<p>可以直接嵌入数据集：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">mydatatxt</span> <span class="o">&lt;-</span> <span class="s">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">+ age gender weight
+</span></span></span><span class="line"><span class="cl"><span class="s">+ 25 m 166
+</span></span></span><span class="line"><span class="cl"><span class="s">+ 30 f 115
+</span></span></span><span class="line"><span class="cl"><span class="s">+ 18 f 120
+</span></span></span><span class="line"><span class="cl"><span class="s">+ &#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">mydata</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">mydatatxt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">mydata</span>
+</span></span><span class="line"><span class="cl">  <span class="n">age</span> <span class="n">gender</span> <span class="n">weight</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>  <span class="m">25</span>      <span class="n">m</span>    <span class="m">166</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span>  <span class="m">30</span>      <span class="n">f</span>    <span class="m">115</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span>  <span class="m">18</span>      <span class="n">f</span>    <span class="m">120</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="从带分隔符的文本文件导入数据">从带分隔符的文本文件导入数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">mydataframe</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/r-basics/read_table_options.png"
+	width="848"
+	height="602"
+	srcset="/p/r-basics/read_table_options_hu400cb9ac04361cc7afb7530bf01f7e73_279671_480x0_resize_box_3.png 480w, /p/r-basics/read_table_options_hu400cb9ac04361cc7afb7530bf01f7e73_279671_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="338px"
+	
+></p>
+<p>默认地，<code>read.table()</code> 把字符变量转化为因子，这并不一定都是我们想要的情况。可以加上 <code>stringsAsFactors=FALSE</code> 对所有的字符变量去掉这个行为。
+此外，可以用 <code>colClasses</code> 选项对每一列都指定一个类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">grades</span> <span class="o">&lt;-</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&#34;studentgrades.csv&#34;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">					 <span class="n">row.names</span><span class="o">=</span><span class="s">&#34;StudentID&#34;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s">&#34;,&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">					 <span class="n">colClasses</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;character&#34;</span><span class="p">,</span> <span class="s">&#34;character&#34;</span><span class="p">,</span> <span class="s">&#34;character&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">					 <span class="s">&#34;numeric&#34;</span><span class="p">,</span> <span class="s">&#34;numeric&#34;</span><span class="p">,</span> <span class="s">&#34;numeric&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="导入excel数据">导入excel数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">xlsx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">workbook</span> <span class="o">&lt;-</span> <span class="s">&#34;c:/myworkbook.xlsx&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">mydataframe</span> <span class="o">&lt;-</span> <span class="nf">read.xlsx</span><span class="p">(</span><span class="n">workbook</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其他的包：XLConnect(依赖于JAVA), openxlsx</p>
+<h3 id="导入xml数据">导入XML数据</h3>
+<p>XML包</p>
+<h3 id="从网页抓取数据">从网页抓取数据</h3>
+<p>网页上的文字可以使用函数 <code>readLines()</code> 来下载到一个R的字符向量中，然后使用如 <code>grep()</code> 和 <code>gsub()</code> 一类的函数处理它。对于结构复杂的网页，可以使用RCurl包和XML包来提取信息。
+twitteR来获取Twitter数据， Rfacebook来获取Facebook数据……
+<a href="https://cran.r-project.org/web/views">CRAN Web Views</a>
+中查看全面列表</p>
+<h3 id="导入spss数据">导入SPSS数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;Hmisc&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">Hmisc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># use.value.labels表示让函数将带有值标签的变量导入为R中水平对应相同的因子</span>
+</span></span><span class="line"><span class="cl"><span class="n">mydataframe</span> <span class="o">&lt;-</span> <span class="nf">spss.get</span><span class="p">(</span><span class="s">&#34;mydata.sav&#34;</span><span class="p">,</span> <span class="n">use.value.labels</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="导入stata数据">导入Stata数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">foreign</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">mydataframe</span> <span class="o">&lt;-</span> <span class="nf">read.dta</span><span class="p">(</span><span class="s">&#34;mydata.dta&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="数据集的标注">数据集的标注</h2>
+<hr>
+<p>这种标注包括为变量名添加描述性的标签，以及为类型变量中的编码添加值标签</p>
+<h3 id="变量标签">变量标签</h3>
+<p>只能修改变量名（不好用）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="nf">namesJ</span><span class="p">(</span><span class="n">patientdata</span><span class="p">)</span><span class="n">[2]</span> <span class="o">&lt;-</span> <span class="s">&#34;Age at hospitalization (in years)&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="值标签">值标签</h3>
+<p>假设有一个名为gender的变量，其中1表示男性，2表示女性，可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">patientdata</span><span class="o">$</span><span class="n">gender</span> <span class="o">&lt;-</span> <span class="nf">factor</span><span class="p">(</span><span class="n">patientdata</span><span class="o">$</span><span class="n">gender</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">							 <span class="n">levels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">							 <span class="n">labels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;male&#34;</span><span class="p">,</span> <span class="s">&#34;female&#34;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="处理数据对象的实用函数">处理数据对象的实用函数</h2>
+<hr>
+<p><img src="/p/r-basics/data_proceeding_functions.png"
+	width="834"
+	height="524"
+	srcset="/p/r-basics/data_proceeding_functions_hua674c0e6396a248b90235e7ef655afa2_134631_480x0_resize_box_3.png 480w, /p/r-basics/data_proceeding_functions_hua674c0e6396a248b90235e7ef655afa2_134631_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="381px"
+	
+></p>
+<h1 id="图形初阶">图形初阶</h1>
+<h2 id="简单例子">简单例子</h2>
+<hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-R" data-lang="R"><span class="line"><span class="cl"><span class="n">dose</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">45</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">drugA</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">16</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">27</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="m">60</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">drugB</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">31</span><span class="p">,</span> <span class="m">40</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">dose</span><span class="p">,</span> <span class="n">drugA</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;b&#34;</span><span class="p">)</span> <span class="c1"># type=&#34;b&#34;表示同时绘制点和线</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/r-basics/bbb.png"
+	width="355"
+	height="340"
+	srcset="/p/r-basics/bbb_hub0f8006be83acfecc4c629d868907ef7_2354_480x0_resize_box_3.png 480w, /p/r-basics/bbb_hub0f8006be83acfecc4c629d868907ef7_2354_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="104"
+		data-flex-basis="250px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/r-language/">r language</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/ggplot2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">ggplot2</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Yuan&#39;s Studio
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

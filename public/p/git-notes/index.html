@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='以前没怎么用git，也就clone，push，add，commit这些，最近两个电脑同步笔记，要用不少git操作。发现以前看的全忘光了，再重新复习一下。
+分支内操作 创建仓库, 提交修改 git init 在当前目录创建仓库 git init filename 在指定目录下创建仓库
+git add . 将修改添加到暂存区 git status 可以查看仓库状态，git会告诉你暂存区有无修改正在等待提交 git commit -m &amp;quot;some describe&amp;quot; 将暂存区的所有修改提交到分支，-m参数为日志内容，linux下用单引号，windows下用双引号
+如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+版本回退 回退 git log 可以查看提交日志(commitment log) git log --pretty=oneline 查看精简版，只有id和提交信息
+回退到上一个版本： git reset --hard HEAD^ 其中 HEAD^ 即上一个版本 上上个版本为 HEAD^^
+撤销回退 如果回退之后想要撤销回退，使用 git reflog 查看head记录 并用 git reset --hard &amp;lt;id&amp;gt; 来回到之前的版本
+撤销修改 git checkout -- &amp;lt;filename&amp;gt; 可以丢弃工作区的修改
+如果文件自修改后还没有被放到暂存区，撤销修改就回到和版本库一样的状态 如果文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态 总之，就是让这个文件回到最近一次 git commit 或者 git add 的状态 git reset HEAD &amp;lt;filename&amp;gt; 可以把暂存区的修改回退到工作区， HEAD表示最新的版本'>
+<title>git notes</title>
+
+<link rel='canonical' href='https://zzzzorange.netlify.com/p/git-notes/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='git notes'>
+<meta property='og:description' content='以前没怎么用git，也就clone，push，add，commit这些，最近两个电脑同步笔记，要用不少git操作。发现以前看的全忘光了，再重新复习一下。
+分支内操作 创建仓库, 提交修改 git init 在当前目录创建仓库 git init filename 在指定目录下创建仓库
+git add . 将修改添加到暂存区 git status 可以查看仓库状态，git会告诉你暂存区有无修改正在等待提交 git commit -m &amp;quot;some describe&amp;quot; 将暂存区的所有修改提交到分支，-m参数为日志内容，linux下用单引号，windows下用双引号
+如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+版本回退 回退 git log 可以查看提交日志(commitment log) git log --pretty=oneline 查看精简版，只有id和提交信息
+回退到上一个版本： git reset --hard HEAD^ 其中 HEAD^ 即上一个版本 上上个版本为 HEAD^^
+撤销回退 如果回退之后想要撤销回退，使用 git reflog 查看head记录 并用 git reset --hard &amp;lt;id&amp;gt; 来回到之前的版本
+撤销修改 git checkout -- &amp;lt;filename&amp;gt; 可以丢弃工作区的修改
+如果文件自修改后还没有被放到暂存区，撤销修改就回到和版本库一样的状态 如果文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态 总之，就是让这个文件回到最近一次 git commit 或者 git add 的状态 git reset HEAD &amp;lt;filename&amp;gt; 可以把暂存区的修改回退到工作区， HEAD表示最新的版本'>
+<meta property='og:url' content='https://zzzzorange.netlify.com/p/git-notes/'>
+<meta property='og:site_name' content='Yuan&#39;s Studio'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-03-02T18:47:21&#43;00:00'/><meta property='article:modified_time' content='2023-03-02T18:47:21&#43;00:00'/>
+<meta name="twitter:title" content="git notes">
+<meta name="twitter:description" content="以前没怎么用git，也就clone，push，add，commit这些，最近两个电脑同步笔记，要用不少git操作。发现以前看的全忘光了，再重新复习一下。
+分支内操作 创建仓库, 提交修改 git init 在当前目录创建仓库 git init filename 在指定目录下创建仓库
+git add . 将修改添加到暂存区 git status 可以查看仓库状态，git会告诉你暂存区有无修改正在等待提交 git commit -m &amp;quot;some describe&amp;quot; 将暂存区的所有修改提交到分支，-m参数为日志内容，linux下用单引号，windows下用双引号
+如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+版本回退 回退 git log 可以查看提交日志(commitment log) git log --pretty=oneline 查看精简版，只有id和提交信息
+回退到上一个版本： git reset --hard HEAD^ 其中 HEAD^ 即上一个版本 上上个版本为 HEAD^^
+撤销回退 如果回退之后想要撤销回退，使用 git reflog 查看head记录 并用 git reset --hard &amp;lt;id&amp;gt; 来回到之前的版本
+撤销修改 git checkout -- &amp;lt;filename&amp;gt; 可以丢弃工作区的修改
+如果文件自修改后还没有被放到暂存区，撤销修改就回到和版本库一样的状态 如果文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态 总之，就是让这个文件回到最近一次 git commit 或者 git add 的状态 git reset HEAD &amp;lt;filename&amp;gt; 可以把暂存区的修改回退到工作区， HEAD表示最新的版本">
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu40fce395f67781a6a2bbc1a7ee0cff83_10067_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">♿</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Yuan&#39;s Studio</a></h1>
+            <h2 class="site-description">Be water, my friend.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/fristzzz'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://zzzzorange.netlify.com/" selected>English</option>
+                        
+                            <option value="https://zzzzorange.netlify.com/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#创建仓库-提交修改">创建仓库, 提交修改</a></li>
+    <li><a href="#版本回退">版本回退</a>
+      <ol>
+        <li><a href="#回退">回退</a></li>
+        <li><a href="#撤销回退">撤销回退</a></li>
+      </ol>
+    </li>
+    <li><a href="#撤销修改">撤销修改</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#创建秘钥">创建秘钥</a></li>
+    <li><a href="#添加远程仓库">添加远程仓库</a></li>
+    <li><a href="#删除远程库">删除远程库</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#创建与合并分支">创建与合并分支</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/coding/" >
+                coding
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/git-notes/">git notes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 02, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>以前没怎么用git，也就clone，push，add，commit这些，最近两个电脑同步笔记，要用不少git操作。发现以前看的全忘光了，再重新复习一下。</p>
+<hr>
+<h1 id="分支内操作">分支内操作</h1>
+<h2 id="创建仓库-提交修改">创建仓库, 提交修改</h2>
+<p><code>git init</code> 在当前目录创建仓库
+<code>git init filename</code> 在指定目录下创建仓库</p>
+<p><code>git add .</code> 将修改添加到暂存区
+<code>git status</code> 可以查看仓库状态，git会告诉你暂存区有无修改正在等待提交
+<code>git commit -m &quot;some describe&quot;</code> 将暂存区的所有修改提交到分支，-m参数为日志内容，linux下用单引号，windows下用双引号</p>
+<p>如果<code>git status</code>告诉你有文件被修改过，用<code>git diff</code>可以查看修改内容。</p>
+<h2 id="版本回退">版本回退</h2>
+<h3 id="回退">回退</h3>
+<p><code>git log</code> 可以查看提交日志(commitment log)
+<code>git log --pretty=oneline</code> 查看精简版，只有id和提交信息</p>
+<p>回退到上一个版本： <code>git reset --hard HEAD^</code> 其中 <code>HEAD^</code> 即上一个版本
+上上个版本为 <code>HEAD^^</code></p>
+<h3 id="撤销回退">撤销回退</h3>
+<p>如果回退之后想要撤销回退，使用 <code>git reflog</code> 查看head记录
+并用 <code>git reset --hard &lt;id&gt;</code> 来回到之前的版本</p>
+<h2 id="撤销修改">撤销修改</h2>
+<ul>
+<li>
+<p><code>git checkout -- &lt;filename&gt;</code> 可以丢弃工作区的修改</p>
+<ul>
+<li>如果文件自修改后还没有被放到暂存区，撤销修改就回到和版本库一样的状态</li>
+<li>如果文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态
+总之，就是让这个文件回到最近一次 <code>git commit</code> 或者 <code>git add</code> 的状态</li>
+</ul>
+</li>
+<li>
+<p><code>git reset HEAD &lt;filename&gt;</code> 可以把暂存区的修改回退到工作区， HEAD表示最新的版本</p>
+</li>
+</ul>
+<h1 id="远程仓库">远程仓库</h1>
+<h2 id="创建秘钥">创建秘钥</h2>
+<p><code>ssh-keygen -t rsa -C &quot;example@email.com&quot;</code>
+默认目录：<code>~/.ssh/</code>
+其中 <code>id_rsa</code> 是私钥， <code>id_rsa.pub</code> 是公钥
+打开github，添加ssh秘钥。复制 <code>id_rsa.pub</code> 内容到key中。</p>
+<blockquote>
+<p>添加完秘钥还不能push的，要把https:改成git:</p>
+</blockquote>
+<h2 id="添加远程仓库">添加远程仓库</h2>
+<p><code>git remote add origin git@github.com:xxx/xxx.git</code>
+远程库的名字就是origin，这是git默认的叫法
+<code>git push -u origin master</code>
+第一次推送加上-u参数可以把本地的master和远程的master分支关联起来，在以后的push或pull的时候就可以简化命令</p>
+<h2 id="删除远程库">删除远程库</h2>
+<p><code>git remote rm &lt;name&gt;</code></p>
+<h1 id="分支管理">分支管理</h1>
+<h2 id="创建与合并分支">创建与合并分支</h2>
+<p><code>git checkout -b dev</code> 创建分支
+-b 表示创建并切换，相当于</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git branch dev
+</span></span><span class="line"><span class="cl">git checkout dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>git branch</code> 查看当前分支</p>
+<p>把dev上的修改合并到master上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git checkout master
+</span></span><span class="line"><span class="cl">git merge dev 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>git merge</code> 用于合并指定分支到当前分支。
+<code>git branch -d dev</code> 删除分支</p>
+<p><code>git switch xxx</code> 也可以切换分支
+<code>git switch -c xxx</code> 创建并切换</p>
+<p><code>git log --graph</code> 查看分支合并图</p>
+<p>合并分支时，加上 <code>--no-ff</code> 参数就可以用普通模式合并，合并后的历史有分支，能看出曾经做过合并，而 <code>fast forward</code> 合并就看不出来曾经做过合并。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Yuan&#39;s Studio
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

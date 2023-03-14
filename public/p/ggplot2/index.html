@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='基本概念library(ggplot2)library(gapminder) # 数据集gm &amp;lt;- gapminderp &amp;lt;- ggplot(data = gm, mapping = aes(x = gdpPercap,y = lifeExp,color = continent,fill = continent))print(p &#43;geom_point() &#43;geom_smooth(method = &amp;quot;loess&amp;quot;) &#43;scale_x_log10(labels = scales::dollar))## `geom_smooth()` using formula = &amp;#39;y ~ x&amp;#39;这个过程类似画一幅水彩画，有很多图层。
+图形部件一张统计图就是从数据到几何形状(geometic object, geom)所包含的图形属性(aesthetic attribute, aes)的一种映射
+data: 数据框 data.frameaes: 数据框中的数据变量映射到图形属性xycolorsizeshapealphageoms: 集合形状geom_bar()geom_density()geom_freqpoly()geom_histogram()geom_violin()geom_boxplot()geom_col()geom_point()geom_smooth()geom_tile()geom_density2d()geom_hex()geom_count()geom_text()geom_sf()statsscalescoordfacetlayerthemesave开始检查是否有缺失值'>
+<title>ggplot2</title>
+
+<link rel='canonical' href='https://zzzzorange.netlify.com/p/ggplot2/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='ggplot2'>
+<meta property='og:description' content='基本概念library(ggplot2)library(gapminder) # 数据集gm &amp;lt;- gapminderp &amp;lt;- ggplot(data = gm, mapping = aes(x = gdpPercap,y = lifeExp,color = continent,fill = continent))print(p &#43;geom_point() &#43;geom_smooth(method = &amp;quot;loess&amp;quot;) &#43;scale_x_log10(labels = scales::dollar))## `geom_smooth()` using formula = &amp;#39;y ~ x&amp;#39;这个过程类似画一幅水彩画，有很多图层。
+图形部件一张统计图就是从数据到几何形状(geometic object, geom)所包含的图形属性(aesthetic attribute, aes)的一种映射
+data: 数据框 data.frameaes: 数据框中的数据变量映射到图形属性xycolorsizeshapealphageoms: 集合形状geom_bar()geom_density()geom_freqpoly()geom_histogram()geom_violin()geom_boxplot()geom_col()geom_point()geom_smooth()geom_tile()geom_density2d()geom_hex()geom_count()geom_text()geom_sf()statsscalescoordfacetlayerthemesave开始检查是否有缺失值'>
+<meta property='og:url' content='https://zzzzorange.netlify.com/p/ggplot2/'>
+<meta property='og:site_name' content='Yuan&#39;s Studio'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-03-07T00:13:11&#43;00:00'/><meta property='article:modified_time' content='2023-03-07T00:13:11&#43;00:00'/>
+<meta name="twitter:title" content="ggplot2">
+<meta name="twitter:description" content="基本概念library(ggplot2)library(gapminder) # 数据集gm &amp;lt;- gapminderp &amp;lt;- ggplot(data = gm, mapping = aes(x = gdpPercap,y = lifeExp,color = continent,fill = continent))print(p &#43;geom_point() &#43;geom_smooth(method = &amp;quot;loess&amp;quot;) &#43;scale_x_log10(labels = scales::dollar))## `geom_smooth()` using formula = &amp;#39;y ~ x&amp;#39;这个过程类似画一幅水彩画，有很多图层。
+图形部件一张统计图就是从数据到几何形状(geometic object, geom)所包含的图形属性(aesthetic attribute, aes)的一种映射
+data: 数据框 data.frameaes: 数据框中的数据变量映射到图形属性xycolorsizeshapealphageoms: 集合形状geom_bar()geom_density()geom_freqpoly()geom_histogram()geom_violin()geom_boxplot()geom_col()geom_point()geom_smooth()geom_tile()geom_density2d()geom_hex()geom_count()geom_text()geom_sf()statsscalescoordfacetlayerthemesave开始检查是否有缺失值">
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu40fce395f67781a6a2bbc1a7ee0cff83_10067_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">♿</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Yuan&#39;s Studio</a></h1>
+            <h2 class="site-description">Be water, my friend.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/fristzzz'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://zzzzorange.netlify.com/" selected>English</option>
+                        
+                            <option value="https://zzzzorange.netlify.com/zh-cn/" >中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/r-language/" >
+                r language
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ggplot2/">ggplot2</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 07, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    
+
+
+<div id="基本概念" class="section level1">
+<h1>基本概念</h1>
+<pre class="r"><code>library(ggplot2)
+library(gapminder) # 数据集
+
+gm &lt;- gapminder
+
+p &lt;- ggplot(data = gm, mapping = aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    fill = continent
+))
+
+print(
+    p +
+        geom_point() +
+        geom_smooth(method = &quot;loess&quot;) +
+        scale_x_log10(labels = scales::dollar)
+)</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="gg_summarize.png" /></p>
+<p>这个过程类似画一幅水彩画，有很多图层。</p>
+<div id="图形部件" class="section level2">
+<h2>图形部件</h2>
+<p>一张统计图就是从数据到几何形状(geometic object, geom)所包含的图形属性(aesthetic attribute, aes)的一种映射</p>
+<ol style="list-style-type: decimal">
+<li>data: 数据框 data.frame</li>
+<li>aes: 数据框中的数据变量<strong>映射</strong>到图形属性
+<ul>
+<li>x</li>
+<li>y</li>
+<li>color</li>
+<li>size</li>
+<li>shape</li>
+<li>alpha</li>
+</ul></li>
+<li>geoms: 集合形状
+<ul>
+<li>geom_bar()</li>
+<li>geom_density()</li>
+<li>geom_freqpoly()</li>
+<li>geom_histogram()</li>
+<li>geom_violin()</li>
+<li>geom_boxplot()</li>
+<li>geom_col()</li>
+<li>geom_point()</li>
+<li>geom_smooth()</li>
+<li>geom_tile()</li>
+<li>geom_density2d()</li>
+<li>geom_hex()</li>
+<li>geom_count()</li>
+<li>geom_text()</li>
+<li>geom_sf()</li>
+</ul></li>
+<li>stats</li>
+<li>scales</li>
+<li>coord</li>
+<li>facet</li>
+<li>layer</li>
+<li>theme</li>
+<li>save</li>
+</ol>
+</div>
+</div>
+<div id="开始" class="section level1">
+<h1>开始</h1>
+<p>检查是否有缺失值</p>
+<pre class="r"><code>library(gapminder)
+library(tidyverse)
+gapdata &lt;- gapminder
+gapdata %&gt;%
+    summarise(
+        across(everything(), ~ sum(is.na(.)))
+    )</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   country continent  year lifeExp   pop gdpPercap
+##     &lt;int&gt;     &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt;     &lt;int&gt;
+## 1       0         0     0       0     0         0</code></pre>
+</div>
+<div id="基本绘图" class="section level1">
+<h1>基本绘图</h1>
+<div id="柱状图" class="section level2">
+<h2>柱状图</h2>
+<p>用于离散变量</p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = continent)) +
+    geom_bar()</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = reorder(continent, continent, length))) +
+    geom_bar()</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = reorder(continent, continent, length))) +
+    geom_bar() +
+    coord_flip()</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;% count(continent)</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   continent     n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Africa      624
+## 2 Americas    300
+## 3 Asia        396
+## 4 Europe      360
+## 5 Oceania      24</code></pre>
+<pre class="r"><code>gapdata %&gt;%
+    distinct(continent, country) %&gt;% # exclude fields with same continent &amp; contry
+    ggplot(aes(x = continent)) +
+    geom_bar()</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+</div>
+<div id="直方图" class="section level2">
+<h2>直方图</h2>
+<p>用于连续变量</p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(lifeExp)) +
+    geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(lifeExp)) +
+    geom_histogram(binwidth = 1) # geom_histograms()默认使用position=&quot;stack&quot;</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = lifeExp, fill = continent)) +
+    geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+</div>
+<div id="频次图" class="section level2">
+<h2>频次图</h2>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = lifeExp, color = continent)) +
+    geom_freqpoly()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="https://zzzzorange.netlify.com/p/ggplot2/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/r-basics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">r basics</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Yuan&#39;s Studio
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

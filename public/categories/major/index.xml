@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>major on Yuan&#39;s Studio</title>
+        <link>https://zzzzorange.netlify.com/categories/major/</link>
+        <description>Recent content in major on Yuan&#39;s Studio</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 07 Mar 2023 16:07:35 +0000</lastBuildDate><atom:link href="https://zzzzorange.netlify.com/categories/major/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>academic writing</title>
+        <link>https://zzzzorange.netlify.com/p/academic-writing/</link>
+        <pubDate>Tue, 07 Mar 2023 16:07:35 +0000</pubDate>
+        
+        <guid>https://zzzzorange.netlify.com/p/academic-writing/</guid>
+        <description>&lt;h1 id=&#34;style&#34;&gt;Style&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Avoid verb + prep (verb instead)&lt;/li&gt;
+&lt;li&gt;Avoid idiomatic惯用的 language&lt;/li&gt;
+&lt;li&gt;Avoid contractions&lt;/li&gt;
+&lt;li&gt;Avoid run-on expression (etc, so on)(use &amp;lsquo;such as&amp;rsquo;)&lt;/li&gt;
+&lt;li&gt;Avoid addressing the reader as &amp;ldquo;you&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Avoid sexist words&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;don&amp;rsquo;t intensify&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>game theory examples</title>
+        <link>https://zzzzorange.netlify.com/p/game-theory-examples/</link>
+        <pubDate>Sat, 04 Mar 2023 01:55:32 +0000</pubDate>
+        
+        <guid>https://zzzzorange.netlify.com/p/game-theory-examples/</guid>
+        <description>&lt;h2 id=&#34;action-and-pure-strategy&#34;&gt;Action and Pure Strategy&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/action_and_pure_strategy.png&#34;
+	width=&#34;1412&#34;
+	height=&#34;530&#34;
+	srcset=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/action_and_pure_strategy_hubaa13a02aaa388cfd12c1cbfe55bfdab_62989_480x0_resize_box_3.png 480w, https://zzzzorange.netlify.com/p/game-theory-examples/action_and_pure_strategy_hubaa13a02aaa388cfd12c1cbfe55bfdab_62989_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;266&#34;
+		data-flex-basis=&#34;639px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;prisoners-dilemma&#34;&gt;Prisoner&amp;rsquo;s Dilemma&lt;/h2&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Two criminals, i=1,2 are arrested for a serous crime and detained in separate cells. During separate interrogation,
+&lt;ul&gt;
+&lt;li&gt;If both &amp;ldquo;confess&amp;rdquo;, they will be jailed for 5 years.&lt;/li&gt;
+&lt;li&gt;If bot &amp;ldquo;don&amp;rsquo;t confess&amp;rdquo;, they will be jailed for 1 year.&lt;/li&gt;
+&lt;li&gt;If player 1 confesses while player 2 does not, then player 1 will be freed and player 2 will be jailed for 10 years.&lt;/li&gt;
+&lt;li&gt;Vice versa&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Formally define the game as
+$$\Gamma={I,{S_i}&lt;em&gt;{i\in N}, {\nu_i(\cdot)}&lt;/em&gt;{i\in N}}$$
+$$I={1, 2}$$
+$$S_1=S_2={c,d}$$
+$$u_1(c,c)=u_2(c,c)=-5$$
+$$u_1(c,d)=u_2(d,c)=0$$
+$$u_1(d,c)=u_2(c,d)=-10$$
+$$u_1(d,d)=u_2(d,d)=-1$$&lt;/p&gt;
+&lt;h3 id=&#34;prisoners-dilemma-payoff&#34;&gt;Prisoner&amp;rsquo;s Dilemma: Payoff&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_1.jpg&#34;
+	width=&#34;1920&#34;
+	height=&#34;1155&#34;
+	srcset=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_1_hu0c041e0723e465cfb422f14c8c5bb830_111394_480x0_resize_q75_box.jpg 480w, https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_1_hu0c041e0723e465cfb422f14c8c5bb830_111394_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_2.jpg&#34;
+	width=&#34;1908&#34;
+	height=&#34;1164&#34;
+	srcset=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_2_hu80f8b1f54ce6a03e63e9c32ca04320d5_104174_480x0_resize_q75_box.jpg 480w, https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_2_hu80f8b1f54ce6a03e63e9c32ca04320d5_104174_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;
+&lt;img src=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_3.jpg&#34;
+	width=&#34;1914&#34;
+	height=&#34;1165&#34;
+	srcset=&#34;https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_3_hu4efbad7db35ce2741dfee22bccb77f35_107124_480x0_resize_q75_box.jpg 480w, https://zzzzorange.netlify.com/p/game-theory-examples/prisoner_3_hu4efbad7db35ce2741dfee22bccb77f35_107124_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;confess is a &lt;strong&gt;strictly dominant strategy&lt;/strong&gt; of i = 1 if
+&lt;ul&gt;
+&lt;li&gt;$u_1(c,c)&amp;gt;u_1(d,c)$ and&lt;/li&gt;
+&lt;li&gt;$u_1(c,d)&amp;gt;u_1(d,d)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>2.Static Complete Info Out</title>
+        <link>https://zzzzorange.netlify.com/p/2.static-complete-info-out/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zzzzorange.netlify.com/p/2.static-complete-info-out/</guid>
+        <description>&lt;h1 id=&#34;game-conponents&#34;&gt;Game Conponents&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;A set of &lt;strong&gt;Actions&lt;/strong&gt; of all the players&lt;/li&gt;
+&lt;li&gt;A set of &lt;strong&gt;Outcomes&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;Association&lt;/strong&gt; between action combinations and outcomes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preferences&lt;/strong&gt; of each player over outcomes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;complete-information&#34;&gt;Complete Information&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;A game of complete information requires that all the &lt;strong&gt;game components&lt;/strong&gt; are common knowledge among all the players.&lt;/p&gt;
+&lt;h2 id=&#34;strategy&#34;&gt;Strategy&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;strategy-pure-strategy-pure-strategy-profile&#34;&gt;Strategy, Pure Strategy, Pure Strategy Profile&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;strategy&lt;/strong&gt; is a plan of action(to achieve a specific goal)&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;pure strategy&lt;/strong&gt; $s_i\in S_i$ is a deterministic plan of action for player i.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;pure strategy profile&lt;/strong&gt; $s = (s_1, s_2, &amp;hellip; , s_n)\in S_1 \times S_2 \times &amp;hellip; \times S_n =: S$ represents a specific combination of strategies across all the players.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;normal-form-game&#34;&gt;Normal Form Game&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;normal-form-game-definition&#34;&gt;Normal Form Game: Definition&lt;/h3&gt;
+&lt;p&gt;In order for a normal form game to be well-defined, we should describe&lt;/p&gt;
+&lt;p&gt;$\Gamma={I,{S_i}&lt;em&gt;{i\in N}, {\nu_i(\cdot)}&lt;/em&gt;{i\in N}}$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A set of players $I = {1, 2, &amp;hellip;, n}$&lt;/li&gt;
+&lt;li&gt;A set of pure strategy for each player ${S_i}_{i\in I}\space or\space {S_1, &amp;hellip;, S_n}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;A set of payoff functions ${u_i()}$ where each function assigns value to all strategy profiles
+$v_i: S_1 \times &amp;hellip; \times S_n \rightarrow R$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;normal-form-game-static-game-vs-dynamic-game&#34;&gt;Normal Form Game: Static Game vs. Dynamic Game&lt;/h3&gt;
+&lt;p&gt;Do any player make decision before others?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Static Game&lt;/strong&gt;: Plaer A and player B make decisions at the same time. Equivalently player A makes decision first and player B makes decision later but without observing player A&amp;rsquo;s decision(and vice versa)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic Game&lt;/strong&gt;: Player A makes decision first and then player B observes A&amp;rsquo;s decision to make the decision.&lt;/p&gt;
+&lt;h3 id=&#34;normal-form-game-prediction&#34;&gt;Normal Form Game: Prediction&lt;/h3&gt;
+&lt;p&gt;What assumption do we make to proceed?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Players are &lt;strong&gt;rational&lt;/strong&gt; to choose payoff-maximizing strategies which are consistently with some beliefs.&lt;/li&gt;
+&lt;li&gt;Players are &lt;strong&gt;intelligent&lt;/strong&gt; to know all the game components&lt;/li&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;and 2. are &lt;strong&gt;common knowledge&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Prediction must be &lt;strong&gt;Self-Enforcing&lt;/strong&gt;(That is, no one has incentives to deviate)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;mixed-strategy&#34;&gt;Mixed Strategy&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;(Def)&lt;strong&gt;Mixed Strategy&lt;/strong&gt;:
+Let $S_i={s_{i1},&amp;hellip;,s_{im}}$ be a finite set of pure strategies for player i.
+$\sigma_i:S_i\rightarrow[0,1]\in\Delta S_i$ is a mixed strategy if $\sum_{s\in s_I}\sigma_i(s)=1$ (That is $\sigma_i$ is a probability mass function over $S_i$)&lt;/p&gt;
+&lt;p&gt;(Def)&lt;strong&gt;Mixed Strategy Profile&lt;/strong&gt;:
+$\sigma=(\sigma_1, &amp;hellip;\sigma_n)$ is a mixed strategy profile if $\sigma_i$ is a mixed strategy for each i.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;To compute player i&amp;rsquo;s payoff, is it sufficient to know player i&amp;rsquo;s (mixed) strategy $\sigma_i$ ?
+- No. Opponents&amp;rsquo; strategies $\sigma_{-i}$ are necessary to compute the payoff.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;mixed-strategy-payoff&#34;&gt;Mixed Strategy: Payoff&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Player i&amp;rsquo;s payoff for mixed strategy profile $\sigma=(\sigma_1,&amp;hellip;,\sigma_n)$
+$$u_i(\sigma)=\sum_{s\in S}(\Pi_{j=1}^n \sigma(s))u_i(s)=\sum_{s\in S}\sigma_1(s_1)&amp;hellip;\sigma_n(s_n)u_i(s_1,&amp;hellip;,s_n)$$
+$$u_i(\sigma)=u_i(\sigma_i, \sigma_{-i})=\sum_{s_{i}\in S_i}\sigma_i(s_i)u_i(s_i,\sigma_{-i})$$
+$$u_i(\sigma)=u_i(\sigma_i, \sigma_{-i})=\sum_{s_{i}\in S_i}\sigma_i(s_i)u_i(s_i,\sigma_{-i})$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;See examples for Prisoner&amp;rsquo;s Dilemma&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;pure--mixed-strategy&#34;&gt;Pure &amp;amp; Mixed Strategy&lt;/h3&gt;
+&lt;p&gt;Q: Does player&amp;rsquo;s pure strategy space $S_i$ lie inside her mixed strategy space $\Delta S_i$ ?
+A: Since a pure strategy $s_{ik}\in S_i$ is also probability distribution over the set of pure strategies, we have $S_i \subset \Delta S_i$.&lt;br&gt;
+Our choice is degenerate distribution with probability one to $s_{ik}$ so that $\sigma_i(s_{ik})=1$ and $\sigma_i(s_i)=0$ for all $s_i \not = s_{ik}$&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Operation Research Examples</title>
+        <link>https://zzzzorange.netlify.com/p/operation-research-examples/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://zzzzorange.netlify.com/p/operation-research-examples/</guid>
+        <description>&lt;h1 id=&#34;linear-programming&#34;&gt;Linear Programming&lt;/h1&gt;
+&lt;h2 id=&#34;e2&#34;&gt;E2&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
