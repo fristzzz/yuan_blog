@@ -2,7 +2,7 @@
 title: 2.Static Complete Info Out
 categories: [major, game theory]
 tag: [game theory]
-mathjax: true
+math: true
 ---
 
 # Game Conponents
@@ -35,7 +35,8 @@ A game of complete information requires that all the **game components** are com
 ### Normal Form Game: Definition
 
 In order for a normal form game to be well-defined, we should describe
-$$\Gamma=\{I,\{S_i\}_{i\in N}, \{\nu_i(\cdot)\}_{i\in N}\}$$
+
+$\Gamma=\{I,\{S_i\}_{i\in N}, \{\nu_i(\cdot)\}_{i\in N}\}$
 
 * A set of players $I = {1, 2, ..., n}$ 
 * A set of pure strategy for each player $\{S_i\}_{i\in I}\space or\space \{S_1, ..., S_n\}$ 

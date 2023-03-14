@@ -1,0 +1,58 @@
+---
+title: "分层分析"
+date: "2023-03-09"
+categories: [modelling]
+---
+
+
+
+<div id="层次分析法" class="section level1">
+<h1>层次分析法</h1>
+<p>将要决策的问题及有关因素分解成目标、准则、方案等层次，进而进行定性和定量分析的决策方法。
+- 特征： 合理地将定性与定量决策结合起来，按照思维、心理的规律把决策过程层次化、数量化。</p>
+<p>大致步骤：
+1. 建立层次结构模型
+2. 构造出各层次中的所有判断矩阵
+3. 层次单排序及一致性检验
+4. 层次总排序及一致性检验</p>
+<div id="层次的建立" class="section level2">
+<h2>层次的建立</h2>
+<ol style="list-style-type: decimal">
+<li>最高层： 一般是目标层</li>
+<li>中间层， 中间环节，主要考虑指标和准则</li>
+<li>最底层： 包含为了实现目标可供选择的各种方案</li>
+</ol>
+<blockquote>
+<p>只考虑相邻两个层次间自上而下的支配作用，同一层次元素间<strong>相互独立</strong>
+否则需要网络分析法</p>
+</blockquote>
+</div>
+<div id="构造判断矩阵" class="section level2">
+<h2>构造判断矩阵</h2>
+<p><img src="/image/modelling/comparing_matrix.png" /></p>
+</div>
+<div id="层次单排序及一致性检验" class="section level2">
+<h2>层次单排序及一致性检验</h2>
+<div id="原理" class="section level3">
+<h3>原理</h3>
+<ul>
+<li>一致性即判断的一种传递性，比如a的重要性是b的2倍，b的重要性是c的2倍，则a的重要性必须是c的4倍。否则就是判断的不一致。</li>
+<li>所谓一致性检验是指判断矩阵允许有一定<strong>不一致的范围</strong></li>
+</ul>
+</div>
+</div>
+<div id="总结" class="section level2">
+<h2>总结</h2>
+<p>怎么跟运筹学这么像，看了看案例，大致步骤依然是定义变量、写出目标函数、写出约束条件、求解。</p>
+<p>层次分析大致是这样：</p>
+<ol style="list-style-type: decimal">
+<li>写出偏好，并标明权重</li>
+<li>分析每一个偏好中所有选择的占比，一般是列<strong>比较矩阵</strong>（相对重要性）。但我觉得这玩意太花哨又不实用，并不是很简练。</li>
+<li>检验一致性，能用就用。一致可以理解为博弈论中的Preferrence Relationship. 如果出现not transitive, 则为不一致。</li>
+</ol>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/BlueMountain-HaggenDazs/p/4278049.html">层次分析法</a></li>
+</ul>
+</div>
+</div>

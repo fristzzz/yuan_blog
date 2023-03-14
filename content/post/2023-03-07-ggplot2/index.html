@@ -1,0 +1,149 @@
+---
+title: ggplot2
+categories: [r language]
+date: 2023-03-07 00:13:11
+---
+
+
+
+<div id="基本概念" class="section level1">
+<h1>基本概念</h1>
+<pre class="r"><code>library(ggplot2)
+library(gapminder) # 数据集
+
+gm &lt;- gapminder
+
+p &lt;- ggplot(data = gm, mapping = aes(
+    x = gdpPercap,
+    y = lifeExp,
+    color = continent,
+    fill = continent
+))
+
+print(
+    p +
+        geom_point() +
+        geom_smooth(method = &quot;loess&quot;) +
+        scale_x_log10(labels = scales::dollar)
+)</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="gg_summarize.png" /></p>
+<p>这个过程类似画一幅水彩画，有很多图层。</p>
+<div id="图形部件" class="section level2">
+<h2>图形部件</h2>
+<p>一张统计图就是从数据到几何形状(geometic object, geom)所包含的图形属性(aesthetic attribute, aes)的一种映射</p>
+<ol style="list-style-type: decimal">
+<li>data: 数据框 data.frame</li>
+<li>aes: 数据框中的数据变量<strong>映射</strong>到图形属性
+<ul>
+<li>x</li>
+<li>y</li>
+<li>color</li>
+<li>size</li>
+<li>shape</li>
+<li>alpha</li>
+</ul></li>
+<li>geoms: 集合形状
+<ul>
+<li>geom_bar()</li>
+<li>geom_density()</li>
+<li>geom_freqpoly()</li>
+<li>geom_histogram()</li>
+<li>geom_violin()</li>
+<li>geom_boxplot()</li>
+<li>geom_col()</li>
+<li>geom_point()</li>
+<li>geom_smooth()</li>
+<li>geom_tile()</li>
+<li>geom_density2d()</li>
+<li>geom_hex()</li>
+<li>geom_count()</li>
+<li>geom_text()</li>
+<li>geom_sf()</li>
+</ul></li>
+<li>stats</li>
+<li>scales</li>
+<li>coord</li>
+<li>facet</li>
+<li>layer</li>
+<li>theme</li>
+<li>save</li>
+</ol>
+</div>
+</div>
+<div id="开始" class="section level1">
+<h1>开始</h1>
+<p>检查是否有缺失值</p>
+<pre class="r"><code>library(gapminder)
+library(tidyverse)
+gapdata &lt;- gapminder
+gapdata %&gt;%
+    summarise(
+        across(everything(), ~ sum(is.na(.)))
+    )</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   country continent  year lifeExp   pop gdpPercap
+##     &lt;int&gt;     &lt;int&gt; &lt;int&gt;   &lt;int&gt; &lt;int&gt;     &lt;int&gt;
+## 1       0         0     0       0     0         0</code></pre>
+</div>
+<div id="基本绘图" class="section level1">
+<h1>基本绘图</h1>
+<div id="柱状图" class="section level2">
+<h2>柱状图</h2>
+<p>用于离散变量</p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = continent)) +
+    geom_bar()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = reorder(continent, continent, length))) +
+    geom_bar()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = reorder(continent, continent, length))) +
+    geom_bar() +
+    coord_flip()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;% count(continent)</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   continent     n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Africa      624
+## 2 Americas    300
+## 3 Asia        396
+## 4 Europe      360
+## 5 Oceania      24</code></pre>
+<pre class="r"><code>gapdata %&gt;%
+    distinct(continent, country) %&gt;% # exclude fields with same continent &amp; contry
+    ggplot(aes(x = continent)) +
+    geom_bar()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+</div>
+<div id="直方图" class="section level2">
+<h2>直方图</h2>
+<p>用于连续变量</p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(lifeExp)) +
+    geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(lifeExp)) +
+    geom_histogram(binwidth = 1) # geom_histograms()默认使用position=&quot;stack&quot;</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = lifeExp, fill = continent)) +
+    geom_histogram()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+</div>
+<div id="频次图" class="section level2">
+<h2>频次图</h2>
+<pre class="r"><code>gapdata %&gt;%
+    ggplot(aes(x = lifeExp, color = continent)) +
+    geom_freqpoly()</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+</div>

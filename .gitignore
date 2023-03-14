@@ -1,2 +1,4 @@
 .obsidian/
 .Rproj.user
+.vscode/
+*.Rproj

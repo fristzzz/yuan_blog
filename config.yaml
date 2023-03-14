@@ -1,8 +1,8 @@
-baseurl: https://example.com
+baseurl: https://zzzzorange.netlify.com
 languageCode: en-us
 theme: "hugo-theme-stack"
 paginate: 5
-title: Example Site
+title: Welcome!
 
 languages:
     en:
